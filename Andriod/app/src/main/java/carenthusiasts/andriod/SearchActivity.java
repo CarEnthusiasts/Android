@@ -756,7 +756,9 @@ public class SearchActivity extends AppCompatActivity {
         final Button SearchButton = (Button) findViewById(R.id.nextButton);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent i = new Intent(getBaseContext(), SearchTagActivity.class);
+                //i.putExtra("PersonID", personID);
+                startActivity(i);
             }
         });
     }
