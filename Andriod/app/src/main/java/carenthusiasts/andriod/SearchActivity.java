@@ -65,7 +65,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -89,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -113,7 +113,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), yearMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), yearMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -137,7 +137,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),yearMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),yearMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -161,7 +161,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), priceMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), priceMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -185,7 +185,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),priceMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),priceMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -209,7 +209,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), mileageMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), mileageMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -233,7 +233,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),mileageMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),mileageMaxString[position], /.LENGTH_SHORT).show();
 
             }
 
@@ -256,7 +256,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), cylindersMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), cylindersMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -279,7 +279,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),cylindersMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),cylindersMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -302,7 +302,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), exteriorColorString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), exteriorColorString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -325,7 +325,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),interiorColorString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),interiorColorString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -348,7 +348,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),drivetrainString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),drivetrainString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -371,7 +371,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),transmissionString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),transmissionString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -394,7 +394,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),fuelString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),fuelString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -417,7 +417,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),bodyStyleString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),bodyStyleString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -440,7 +440,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), seatsMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), seatsMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -463,7 +463,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),seatsMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),seatsMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -486,7 +486,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), hpMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), hpMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -509,7 +509,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),hpMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),hpMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -532,7 +532,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), tqMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), tqMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -555,7 +555,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),tqMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),tqMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -578,7 +578,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), engineDisplacementMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), engineDisplacementMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -601,7 +601,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),engineDisplacementMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),engineDisplacementMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -624,7 +624,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), zeroSixtyMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), zeroSixtyMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -647,7 +647,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),zeroSixtyMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),zeroSixtyMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -670,7 +670,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), topSpeedMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), topSpeedMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -693,7 +693,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),topSpeedMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),topSpeedMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -716,7 +716,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), sixtyZeroMinString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), sixtyZeroMinString[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -739,7 +739,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),sixtyZeroMaxString[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),sixtyZeroMaxString[position], Toast.LENGTH_SHORT).show();
 
             }
 

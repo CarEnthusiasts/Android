@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchActivity" />
-        <activity android:name=".SearchTagActivity"></activity>
+        <activity android:name=".SearchTagActivity" />
+        <activity android:name=".SearchResultsActivity"></activity>
     </application>
 
 </manifest>
