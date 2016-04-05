@@ -1,0 +1,131 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="carenthusiasts.andriod.CarsFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="4"
+            android:rowCount="11"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/imageView"
+                android:layout_rowSpan="4"
+                android:layout_columnSpan="2"
+                android:src="@android:drawable/sym_def_app_icon"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Year"
+                android:padding="5dp"
+                android:id="@+id/YearText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Car Name"
+                android:padding="5dp"
+                android:id="@+id/carNameText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Mileage"
+                android:padding="5dp"
+                android:id="@+id/MileageText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Price"
+                android:padding="5dp"
+                android:id="@+id/PriceText" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="search1"
+                android:padding="5dp"
+                android:id="@+id/criteria1Text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="search2"
+                android:padding="5dp"
+                android:id="@+id/criteria2Text" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="search3"
+                android:padding="5dp"
+                android:id="@+id/criteria3Text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="search4"
+                android:padding="5dp"
+                android:id="@+id/criteria4Text" />
+
+        </GridLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:columnOrderPreserved="true"
+            android:rowCount="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Tag1"
+                android:id="@+id/Tag1"
+                android:layout_margin="10dp"
+                android:background="@drawable/tag_layout"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Tag2"
+                android:id="@+id/Tag2"
+                android:layout_margin="10dp"
+                android:background="@drawable/tag_layout"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Tag3"
+                android:id="@+id/Tag3"
+                android:layout_margin="10dp"
+                android:background="@drawable/tag_layout"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Tag4"
+                android:id="@+id/Tag4"
+                android:layout_margin="10dp"
+                android:background="@drawable/tag_layout"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
