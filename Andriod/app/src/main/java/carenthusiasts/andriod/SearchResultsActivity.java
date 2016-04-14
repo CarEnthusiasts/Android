@@ -17,12 +17,8 @@ public class SearchResultsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
-        loadCars(savedInstanceState);
     }
     private void loadCars(Bundle savedInstanceState){
-        if (savedInstanceState == null) {
-            FrameLayout newCar = new fragment_cars()
 
-        }
     }
 }

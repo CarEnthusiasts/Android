@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="carenthusiasts.andriod">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,9 +23,12 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".SearchTagActivity" />
         <activity android:name=".SearchResultsActivity" />
-        <activity android:name=".CarPageActivity"></activity>
+        <activity android:name=".CarPageActivity" />
+        <activity android:name=".SellActivity" />
+        <activity android:name=".SellTagActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".EditPersonalInfoActivity" />
+        <activity android:name=".ChangePasswordActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

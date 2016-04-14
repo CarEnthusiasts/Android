@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
         final Button SellButton = (Button) findViewById(R.id.SellButton);
         SellButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
+                Intent i = new Intent(getBaseContext(), SellActivity.class);
+                //i.putExtra("PersonID", personID);
+                startActivity(i);
             }
         });
 
