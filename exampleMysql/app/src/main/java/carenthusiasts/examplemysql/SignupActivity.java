@@ -66,7 +66,6 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
         if (jsonStr != null) {
             try {
                 JSONObject jsonObj = new JSONObject(jsonStr);
-                jsonObj.
                 String query_result = jsonObj.getString("id");
                 if (query_result.equals("62")) {
                     Toast.makeText(context, "Data inserted successfully. Signup successfull.", Toast.LENGTH_SHORT).show();

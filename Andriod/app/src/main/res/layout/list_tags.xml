@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@drawable/tag_layout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorWhiteText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="+"
+        />
+    <TextView
+        android:id="@+id/vers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorWhiteText"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="5 Lug Swap"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhiteText"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=" : "
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/colorWhiteText"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="5pt"
+        android:text="Front suspension modified from E36 M3 rear from Z3m coupe"
+        />
+
+
+</LinearLayout>

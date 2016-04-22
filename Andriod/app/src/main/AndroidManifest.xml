@@ -28,7 +28,8 @@
         <activity android:name=".SellTagActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".EditPersonalInfoActivity" />
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

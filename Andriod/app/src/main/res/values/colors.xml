@@ -6,4 +6,8 @@
     <color name="colorBackground">#BBBBBB</color>
     <color name="colorTags">#0044ff</color>
     <color name="colorCarFragmentBackground">#DDDDDD</color>
+    <color name="colorTitleBar">#e62200</color>
+    <color name="colorCarResultList">#CCCCCC</color>
+    <color name="colorSearchResultList">#CCCCCC</color>
+    <color name="colorWhiteText">#FFFFFF</color>
 </resources>

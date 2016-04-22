@@ -11,12 +11,37 @@
     android:id="@+id/SearchResults"
     tools:context="carenthusiasts.andriod.SearchResultsActivity"
     >
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorCarFragmentBackground"
-    android:id="@+id/frame1"
-    ></FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Search"
+            android:id="@+id/saveSearchButton" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Search"
+            android:id="@+id/editSearchButton" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Search"
+            android:id="@+id/newSearchButton" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
 
 
 </LinearLayout>

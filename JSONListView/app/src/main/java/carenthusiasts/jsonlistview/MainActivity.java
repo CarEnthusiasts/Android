@@ -34,9 +34,6 @@ public class MainActivity extends Activity {
     Button Btngetdata;
     ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
 
-    //URL to get JSON Array
-    private static String url = "http://api.learn2crack.com/android/jsonos/";
-
     //JSON Node Names
     private static final String TAG_OS = "android";
     private static final String TAG_VER = "ver";
