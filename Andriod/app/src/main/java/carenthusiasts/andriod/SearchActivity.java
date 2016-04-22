@@ -1,5 +1,17 @@
 package carenthusiasts.andriod;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +22,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.Callable;
 
 public class SearchActivity extends AppCompatActivity {
+
+    private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +70,52 @@ public class SearchActivity extends AppCompatActivity {
         createTopSpeedMaxSpinner();
         createSixtyZeroMinSpinner();
         createSixtyZeroMaxSpinner();
+        createImageButton();
         createSearchButton();
+
+    }
+    private void createImageButton(){
+        ImageButton buttonLoadImage = (ImageButton) findViewById(R.id.searchImageButton);
+        buttonLoadImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data
+                )
+        {
+            Uri selectedImage = data.getData();
+          /*  String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+          //  ImageView imageView = (ImageView) findViewById(R.id.imageView);
+           // imageView.setImageURI(selectedImage);
+*/
+            TextView imageURI = (TextView) findViewById(R.id.imageURI);
+            imageURI.setText(selectedImage.toString());
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
 
     }
 
@@ -68,8 +129,20 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                // TODO Auto-generated method stub
+                String[] modelString= new String[]{"4C","Guilia"};;
+                switch(position){
+                    case 0:
+                        modelString = new String[]{"4C","Guilia"};
+                        break;
+                    case 1:
+                        modelString = new String[]{"DB4","DB5","DB7","DB9","Vanquish","Vantage","Rapide"};
+                }
+                Spinner modelSpinner = (Spinner) findViewById(R.id.ModelSpinner);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this,
+                        android.R.layout.simple_spinner_item, modelString);
+                modelSpinner.setAdapter(adapter);
                 //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -93,7 +166,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
 
             }
 
