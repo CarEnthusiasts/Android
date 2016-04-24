@@ -1,24 +1,27 @@
-package carenthusiasts.examplemysql;
+package carenthusiasts.andriod;
 
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+        import android.content.Context;
+        import android.os.AsyncTask;
+        import android.widget.Toast;
 
-public class SignupActivity extends AsyncTask<String, Void, String> {
+        import org.json.JSONException;
+        import org.json.JSONObject;
+
+        import java.io.BufferedReader;
+        import java.io.InputStreamReader;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
+        import java.net.URLEncoder;
+
+
+public class SearchPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;
 
-    public SignupActivity(Context context) {
+    public SearchPHPLoader(Context context) {
         this.context = context;
     }
 
@@ -28,11 +31,9 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... arg0) {
-        String fullName = arg0[0];
-        String userName = arg0[1];
-        String passWord = arg0[2];
-        String phoneNumber = arg0[3];
-        String emailAddress = arg0[4];
+        String user = arg0[0];
+        String search = arg0[1];
+        String searchname = arg0[2];
 
         String link;
         String data;
@@ -40,19 +41,18 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
         String result;
 
         try {
-            data = "?fullname=" + URLEncoder.encode(fullName, "UTF-8");
-            data += "&username=" + URLEncoder.encode(userName, "UTF-8");
-            data += "&password=" + URLEncoder.encode(passWord, "UTF-8");
-            data += "&phonenumber=" + URLEncoder.encode(phoneNumber, "UTF-8");
-            data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
+            data = "?user=" + URLEncoder.encode(user, "UTF-8");
+            data += "&search=" + URLEncoder.encode(search, "UTF-8");
+            data += "&searchname=" + URLEncoder.encode(searchname, "UTF-8");
 
-            link = "http://192.168.0.6/example/signup.php" + data;
-          //  link ="http://192.168.0.6/example/getinfo.php";
+            link = "http://192.168.0.6/carenthusiasts/search.php" + data;
+
             URL url = new URL(link);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
             result = bufferedReader.readLine();
+            con.disconnect();
             return result;
         } catch (Exception e) {
             return new String("Exception: " + e.getMessage());

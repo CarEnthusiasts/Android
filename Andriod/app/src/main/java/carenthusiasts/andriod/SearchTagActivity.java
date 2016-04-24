@@ -55,7 +55,9 @@ public class SearchTagActivity extends AppCompatActivity {
         tagName.setTextAppearance(this,android.R.style.TextAppearance_Medium);  //deprecated but new version without passing This requires api 23+
         Spinner TagCategorySpinner = new Spinner(SearchTagActivity.this);
 
-        final String[] arraySpinner =  {"Filled","with","dummy","data"};
+        final Spinner TagSpinner = new Spinner(SearchTagActivity.this);
+
+        final String[] arraySpinner =  {"Select","Engine","Suspension","Interior","Bodywork","Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         TagCategorySpinner.setAdapter(adapter);
@@ -65,19 +67,59 @@ public class SearchTagActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(),arraySpinner[position], Toast.LENGTH_SHORT).show();
+                String[] modelString = new String[]{"Select"};
+                switch (position) {
+                    case 1:
+                        modelString = new String[]{"Select","Turbo", "Supercharge", "Engine Swap", "Headers", "Air Intake"};
+                        break;
+                    case 2:
+                        modelString = new String[]{"Select","Frontend Swap", "Rearend Swap", "Lug Swap", "Lowered", "Stanced", "Sway Bars"};
+                        break;
+                    case 3:
+                        modelString = new String[]{"Select","Trim", "Seats", "Rollbar", "Rollcage"};
+                        break;
+                    case 4:
+                        modelString = new String[]{"Select","Body Kit", "Hood", "Trunk", "Fenders", "Doors", "Roof", "Spoiler"
+                        };
+                        break;
+                    case 5:
+                        modelString = new String[]{"Other"
+                        };
+                        break;
+                }
 
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchTagActivity.this,
+                        android.R.layout.simple_spinner_item, modelString);
+
+                final String[] resultString = modelString;
+                TagSpinner.setAdapter(adapter);
+                TagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
+
+                                                         @Override
+                                                         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                                                             // TODO Auto-generated method stub
+                                                             Toast.makeText(getBaseContext(), resultString[position], Toast.LENGTH_SHORT).show();
+
+                                                         }
+
+                                                         @Override
+                                                         public void onNothingSelected(AdapterView<?> arg0) {
+                                                             // TODO Auto-generated method stub
+
+                                                         }
+                                                     }
+                );
             }
+                //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
+                @Override
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    // TODO Auto-generated method stub
 
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
+                }
 
-            }
+            });
 
-        });
 
-        Spinner TagSpinner = new Spinner(SearchTagActivity.this);
 
         final String[] arraySpinner2 =  {"Filled","with","dummy","data","aswell"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,

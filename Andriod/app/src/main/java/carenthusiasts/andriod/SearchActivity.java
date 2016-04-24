@@ -31,7 +31,6 @@ import java.util.concurrent.Callable;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,77 +69,86 @@ public class SearchActivity extends AppCompatActivity {
         createTopSpeedMaxSpinner();
         createSixtyZeroMinSpinner();
         createSixtyZeroMaxSpinner();
-        createImageButton();
         createSearchButton();
-
-    }
-    private void createImageButton(){
-        ImageButton buttonLoadImage = (ImageButton) findViewById(R.id.searchImageButton);
-        buttonLoadImage.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data
-                )
-        {
-            Uri selectedImage = data.getData();
-          /*  String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-
-          //  ImageView imageView = (ImageView) findViewById(R.id.imageView);
-           // imageView.setImageURI(selectedImage);
-*/
-            TextView imageURI = (TextView) findViewById(R.id.imageURI);
-            imageURI.setText(selectedImage.toString());
-            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-        }
 
     }
 
     /** makes the MakeSpinner **/
     private void createMakeSpinner(){
         final String[] makeString = new String[]{
-                "Alfa Romeo","Aston Martin","Audi"
+                "Alfa Romeo","Aston Martin","Audi", "BMW","Chevrolet","Dodge","Ferrari","Honda"
         };
         int makePosition = 1;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //adds the listener to the spinner
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                String[] modelString= new String[]{"4C","Guilia"};;
+                String[] modelString= new String[]{""};
                 switch(position){
                     case 0:
                         modelString = new String[]{"4C","Guilia"};
                         break;
                     case 1:
                         modelString = new String[]{"DB4","DB5","DB7","DB9","Vanquish","Vantage","Rapide"};
+                        break;
+                    case 2:
+                        modelString = new String[]{
+                                "A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","RS4","RS5","RS6","RS7","S3","S4","S5","S6","S7","S8"
+                        };
+                        break;
+                    case 3:
+                        modelString = new String[]{
+                                "1 Series","2 Series","3 Series","4 Series","5 Series","6 Series","7 Series","8 Series","M1",
+                                "1M","M2","M3","M4","M5","M6","X1","X2","X3","X4","X5","X6"
+                        };
+                        break;
+                    case 4:
+                        modelString = new String[]{
+                                "Camaro","Cavalier","Cobalt","Corvette","Equinox","HHR","Impala","Malibu","S-10",
+                                "Silverado","Spark","SS","SSR","Suburban","Tahoe","TrailBlazer","Volt"
+                        };
+                        break;
+                    case 5:
+                        modelString = new String[]{
+                                "Avenger","Challenger","Charger","Dart","Durango","Grand Caravan","Intrepid","Neon","Ram 1500",
+                                "Ram 2500","Ram 3500","Viper","Stratus"
+                        };
+                        break;
+                    case 6:
+                        modelString = new String[]{
+                                "360","456","458","550","575","599","612 Scaglietti","California","Enzo",
+                                "F12 Berlinetta","F355","F430","F50","F40","FF","Superamerica"
+                        };
+                        break;
+                    case 7:
+                        modelString = new String[]{
+                                "Accord","Civic","CR-V","Crosstour","Element","Fit","HR-V","Insight","Odyssey",
+                                "Passport","Pilot","Prelude","Ridgeline","S2000"
+                        };
+                        break;
                 }
                 Spinner modelSpinner = (Spinner) findViewById(R.id.ModelSpinner);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this,
                         android.R.layout.simple_spinner_item, modelString);
+
+                final String[] resultString = modelString;
                 modelSpinner.setAdapter(adapter);
+                modelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
+
+                   @Override
+                   public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                       // TODO Auto-generated method stub
+                       Toast.makeText(getBaseContext(), resultString[position], Toast.LENGTH_SHORT).show();
+
+                   }
+
+                   @Override
+                   public void onNothingSelected(AdapterView<?> arg0) {
+                       // TODO Auto-generated method stub
+
+                   }
+               }
+                );
                 //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
 
 
@@ -158,7 +166,7 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the model Spinner*/
     private void createModelSpinner(){
         final String[] modelString = new String[]{
-                "This","Needs","To","Change","Based","On","Make","Selected"
+                "Select","This","Needs","To","Change","Based","On","Make","Selected"
         };
         int modelPosition =2;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -166,7 +174,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), ""+position, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -182,7 +190,8 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the year minimum Spinner*/
     private void createYearMinSpinner(){
         final String[] yearMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004"
+                ,"2003","2002","2001","2000"
         };
         int yearMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -206,7 +215,8 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the year max Spinner*/
     private void createYearMaxSpinner(){
         final String[] yearMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004"
+                ,"2003","2002","2001","2000"
         };
         int yearMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -230,7 +240,9 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the year minimum Spinner*/
     private void createPriceMinSpinner(){
         final String[] priceMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","$1000","$2000","$3000","$4000","$5000","$6000","$7000","$8000","$9000","$10000",
+                "$11000","$12000","$13000","$14000","$15000","$16000","$17000","$18000","$19000","$20000"
+                ,"$25000","$30000","35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","100000"
         };
         int priceMinPosition =5;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -254,7 +266,9 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the model Spinner*/
     private void createPriceMaxSpinner(){
         final String[] priceMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","$1000","$2000","$3000","$4000","$5000","$6000","$7000","$8000","$9000","$10000",
+                "$11000","$12000","$13000","$14000","$15000","$16000","$17000","$18000","$19000","$20000"
+                ,"$25000","$30000","35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","100000"
         };
         int priceMaxPosition =6;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -278,7 +292,7 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the mileage minimum Spinner*/
     private void createMileageMinSpinner(){
         final String[] mileageMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","10000","20000","30000","40000","50000","60000","70000","80000","90000","100000"
         };
         int mileageMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -302,7 +316,7 @@ public class SearchActivity extends AppCompatActivity {
     /** This function will create the model Spinner*/
     private void createMileageMaxSpinner(){
         final String[] mileageMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","10000","20000","30000","40000","50000","60000","70000","80000","90000","100000"
         };
         int mileageMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -325,7 +339,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createCylindersMinSpinner(){
         final String[] cylindersMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","4","6","8","10","12","16"
         };
         int cylindersMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -348,7 +362,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createCylingersMaxSpinner(){
         final String[] cylindersMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","4","6","8","10","12","16"
         };
         int cylindersMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -371,7 +385,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createExteriorColorSpinner(){
         final String[] exteriorColorString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","Blue","Green","Red","Black","White","Gold"
         };
         int exteriorColorPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -394,7 +408,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createInteriorColorSpinner(){
         final String[] interiorColorString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Tan","Light Tan","Red","Black","White","Gold"
         };
         int interiorColorPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -417,7 +431,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createDrivetrainSpinner(){
         final String[] drivetrainString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","FWD","AWD","RWD","4x4"
         };
         int drivetrainPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -440,7 +454,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createTransmissionSpinner(){
         final String[] transmissionString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Manual","Automatic","Other"
         };
         int transmissionPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -463,7 +477,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createFuelSpinner(){
         final String[] fuelString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Gasoline","E-85","Electric"
         };
         int fuelPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -486,7 +500,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createBodyStyleSpinner(){
         final String[] bodyStyleString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Convertible","Coupe","Sedan","Wagon","Truck","SUV","Hatchback"
         };
         int bodyStylePosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -509,7 +523,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createSeatsMinSpinner(){
         final String[] seatsMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","1","2","3","4","5","6","7","8","9"
         };
         int seatsMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -532,7 +546,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createSeatsMaxSpinner(){
         final String[] seatsMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","1","2","3","4","5","6","7","8","9"
         };
         int seatsMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -555,7 +569,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createHorsepowerMinSpinner(){
         final String[] hpMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","100","150","200","250","300","350","400","450","500"
         };
         int hpMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -578,7 +592,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createHorsepowerMaxSpinner(){
         final String[] hpMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","100","150","200","250","300","350","400","450","500"
         };
         int hpMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -601,7 +615,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createTorqueMinSpinner(){
         final String[] tqMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","100","150","200","250","300","350","400","450","500"
         };
         int tqMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -624,7 +638,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createTorqueMaxSpinner(){
         final String[] tqMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","100","150","200","250","300","350","400","450","500"
         };
         int tqMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -647,7 +661,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createEngineDisplacementMinSpinner(){
         final String[] engineDisplacementMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","1L","1.5L","2L","2.5L","3L","3.5L","4L","4.5L","5L","5.5L","6L"
         };
         int engineDisplacementMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -670,7 +684,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createEngineDisplacementMaxSpinner(){
         final String[] engineDisplacementMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","1L","1.5L","2L","2.5L","3L","3.5L","4L","4.5L","5L","5.5L","6L"
         };
         int engineDisplacementMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -693,7 +707,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createZeroSixtyMinSpinner(){
         final String[] zeroSixtyMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select", "1s","2s","3s","4s","5s","6s","7s","8s"
         };
         int zeroSixtyMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -716,7 +730,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createZeroSixtyMaxSpinner(){
         final String[] zeroSixtyMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","1s","2s","3s","4s","5s","6s","7s","8s"
         };
         int zeroSixtyMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -739,7 +753,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createTopSpeedMinSpinner(){
         final String[] topSpeedMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","100","125","150","175","200","225"
         };
         int topSpeedMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -762,7 +776,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createTopSpeedMaxSpinner(){
         final String[] topSpeedMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","100","125","150","175","200","225"
         };
         int topSpeedMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -785,7 +799,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createSixtyZeroMinSpinner(){
         final String[] sixtyZeroMinString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","10ft","20ft","30ft","40ft","50ft","60ft","70ft","80ft","90ft","100ft"
         };
         int sixtyZeroMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -808,7 +822,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void createSixtyZeroMaxSpinner(){
         final String[] sixtyZeroMaxString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","10ft","20ft","30ft","40ft","50ft","60ft","70ft","80ft","90ft","100ft"
         };
         int sixtyZeroMaxPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner

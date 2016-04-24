@@ -456,7 +456,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="60-0 Time"
+                android:text="60-0"
                 android:layout_column="1" />
 
             <Spinner
@@ -476,33 +476,7 @@
                 android:layout_height="wrap_content"/>
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Load Picture: "
-                android:id="@+id/textView"
-                android:layout_column="1" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="50dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/imageURI" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/searchImageButton"
-                android:src="@drawable/abc_ic_search_api_mtrl_alpha" />
-
-
-
-        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"

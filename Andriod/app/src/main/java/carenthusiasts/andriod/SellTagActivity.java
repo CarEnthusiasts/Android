@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,9 +18,25 @@ import java.text.DecimalFormat;
 
 public class SellTagActivity extends AppCompatActivity {
 
+    private String category ="NULL";
+    private String tag = "NULL";
+    private String description = "NULL";
+    private String carid = "NULL";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                carid= null;
+            } else {
+                carid= extras.getString("CARID");
+            }
+        } else {
+            carid= (String) savedInstanceState.getSerializable("CARID");
+        }
         setContentView(R.layout.activity_sell_tag);
         createAddTagButton();
         createSearchButton();
@@ -64,7 +81,9 @@ public class SellTagActivity extends AppCompatActivity {
         tagName.setTextAppearance(this,android.R.style.TextAppearance_Medium);  //deprecated but new version without passing This requires api 23+
         Spinner TagCategorySpinner = new Spinner(SellTagActivity.this);
 
-        final String[] arraySpinner =  {"Filled","with","dummy","data"};
+        final Spinner TagSpinner = new Spinner(SellTagActivity.this);
+
+        final String[] arraySpinner =  {"Select","Engine","Suspension","Interior","Bodywork","Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         TagCategorySpinner.setAdapter(adapter);
@@ -74,10 +93,51 @@ public class SellTagActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), arraySpinner[position], Toast.LENGTH_SHORT).show();
+                String[] modelString = new String[]{"Select"};
+                switch (position) {
+                    case 1:
+                        modelString = new String[]{"Select","Turbo", "Supercharge", "Engine Swap", "Headers", "Air Intake"};
+                        break;
+                    case 2:
+                        modelString = new String[]{"Select","Frontend Swap", "Rearend Swap", "Lug Swap", "Lowered", "Stanced", "Sway Bars"};
+                        break;
+                    case 3:
+                        modelString = new String[]{"Select","Trim", "Seats", "Rollbar", "Rollcage"};
+                        break;
+                    case 4:
+                        modelString = new String[]{"Select","Body Kit", "Hood", "Trunk", "Fenders", "Doors", "Roof", "Spoiler"
+                        };
+                        break;
+                    case 5:
+                        modelString = new String[]{"Other"
+                        };
+                        break;
+                }
 
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(SellTagActivity.this,
+                        android.R.layout.simple_spinner_item, modelString);
+                category = arraySpinner[position];
+
+                final String[] resultString = modelString;
+                TagSpinner.setAdapter(adapter);
+                TagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
+
+                                                         @Override
+                                                         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                                                             // TODO Auto-generated method stub
+                                                             tag =  resultString[position];
+
+                                                         }
+
+                                                         @Override
+                                                         public void onNothingSelected(AdapterView<?> arg0) {
+                                                             // TODO Auto-generated method stub
+
+                                                         }
+                                                     }
+                );
             }
-
+            //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -86,7 +146,7 @@ public class SellTagActivity extends AppCompatActivity {
 
         });
 
-        Spinner TagSpinner = new Spinner(SellTagActivity.this);
+
 
         final String[] arraySpinner2 =  {"Filled","with","dummy","data","aswell"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
@@ -110,13 +170,36 @@ public class SellTagActivity extends AppCompatActivity {
 
         });
 
+
         TextView Description = new TextView(SellTagActivity.this);
         Description.setText("Description: ");
         Description.setTextAppearance(this, android.R.style.TextAppearance_Medium);
 
-        TextInputEditText descriptionText = new TextInputEditText(SellTagActivity.this);
+        final TextInputEditText descriptionText = new TextInputEditText(SellTagActivity.this);
         descriptionText.setWidth(600);
+        descriptionText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String hold =descriptionText.getText().toString();
+                    if(hold.equals("")){
+                        description="NULL";
+                    }
+                    else{
+                        description=hold;
+                    }
+                    if(category.equals("Select")){
+                        category="NULL";
+                    }
+                    if(tag.equals("Select")){
+                        tag="NULL";
+                    }
+
+                    new TagPHPLoader(SellTagActivity.this).execute(category,tag,description,carid);
+                }
+
+            }
+        });
         newTagContainer.addView(tagName);
         newTagContainer.addView(TagCategorySpinner);
         newTagContainer.addView(TagSpinner);

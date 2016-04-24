@@ -1,7 +1,11 @@
-package carenthusiasts.examplemysql;
+package carenthusiasts.andriod;
 
+/**
+ * Created by Alex on 4/22/2016.
+ */
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -14,11 +18,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class SignupActivity extends AsyncTask<String, Void, String> {
+
+public class RegisterPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;
+    public static final String USER = "USERNAME";
+    private String emailAddress;
 
-    public SignupActivity(Context context) {
+    public RegisterPHPLoader(Context context) {
         this.context = context;
     }
 
@@ -28,11 +35,8 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... arg0) {
-        String fullName = arg0[0];
-        String userName = arg0[1];
-        String passWord = arg0[2];
-        String phoneNumber = arg0[3];
-        String emailAddress = arg0[4];
+        emailAddress = arg0[0];
+        String password = arg0[1];
 
         String link;
         String data;
@@ -40,19 +44,18 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
         String result;
 
         try {
-            data = "?fullname=" + URLEncoder.encode(fullName, "UTF-8");
-            data += "&username=" + URLEncoder.encode(userName, "UTF-8");
-            data += "&password=" + URLEncoder.encode(passWord, "UTF-8");
-            data += "&phonenumber=" + URLEncoder.encode(phoneNumber, "UTF-8");
-            data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
+            data = "?emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
+            data += "&password=" + URLEncoder.encode(password, "UTF-8");
 
-            link = "http://192.168.0.6/example/signup.php" + data;
-          //  link ="http://192.168.0.6/example/getinfo.php";
+
+            link = "http://192.168.0.6/carenthusiasts/register.php" + data;
+
             URL url = new URL(link);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
             result = bufferedReader.readLine();
+            con.disconnect();
             return result;
         } catch (Exception e) {
             return new String("Exception: " + e.getMessage());
@@ -67,9 +70,12 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
                 JSONObject jsonObj = new JSONObject(jsonStr);
                 String query_result = jsonObj.getString("query_result");
                 if (query_result.equals("SUCCESS")) {
-                    Toast.makeText(context, "Data inserted successfully. Signup successfull.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Data inserted successfully. Registration successfull.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, SellActivity.class);
+                    i.putExtra("USER", emailAddress);
+                    context.startActivity(i);
                 } else if (query_result.equals("FAILURE")) {
-                    Toast.makeText(context, "Data could not be inserted. Signup failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Email already in use please login.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "Couldn't connect to remote database.", Toast.LENGTH_SHORT).show();
                 }
@@ -81,5 +87,6 @@ public class SignupActivity extends AsyncTask<String, Void, String> {
         } else {
             Toast.makeText(context, "Couldn't get any JSON data.", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

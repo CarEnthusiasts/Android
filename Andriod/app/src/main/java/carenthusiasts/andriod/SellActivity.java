@@ -1,23 +1,62 @@
 package carenthusiasts.andriod;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SellActivity extends AppCompatActivity {
 
+    private String make ="NULL";
+    private String model = "NULL";
+    private String year = "NULL";
+    private String price = "NULL";
+    private String mileage = "NULL";
+    private String cylinders = "NULL";
+    private String displacement = "NULL";
+    private String hp = "NULL";
+    private String tq = "NULL";
+    private String zerosixty = "NULL";
+    private String topspeed = "NULL";
+    private String sixtyzero = "NULL";
+    private String seats = "NULL";
+    private String exterior = "NULL";
+    private String interior = "NULL";
+    private String drivetrain = "NULL";
+    private String transmission = "NULL";
+    private String fuel = "NULL";
+    private String bodytype = "NULL";
+    private String picture = "NULL";
+    private String useremail = "";
+    private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                useremail= null;
+            } else {
+                useremail= extras.getString("USER");
+            }
+        } else {
+            useremail= (String) savedInstanceState.getSerializable("USER");
+        }
+
+
         setContentView(R.layout.activity_sell);
         createNextButton();
         createAllSpinners();
+        createImageButton();
     }
     private  void createAllSpinners(){
         createMakeSpinner();
@@ -34,35 +73,256 @@ public class SellActivity extends AppCompatActivity {
         final Button NextButton = (Button) findViewById(R.id.NextButton);
         NextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), SellTagActivity.class);
-                //i.putExtra("PersonID", personID);
-                startActivity(i);
+                loadcar();
+
             }
         });
+    }
+    private void loadcar(){
+        String hold="";
+        if(year.equals("Select")){
+            year="NULL";
+        }
+        if(exterior.equals("Select")){
+            exterior="NULL";
+        }
+        if(interior.equals("Select")){
+            interior="NULL";
+        }
+        if(drivetrain.equals("Select")){
+            drivetrain="NULL";
+        }
+        if(transmission.equals("Select")){
+            transmission="NULL";
+        }
+        if(fuel.equals("Select")){
+            fuel="NULL";
+        }
+        if(bodytype.equals("Select")){
+            bodytype="NULL";
+        }
+        EditText priceT = (EditText) findViewById(R.id.PriceEditText);
+        hold =priceT.getText().toString();
+        if(hold.equals("")){
+            price="NULL";
+        }
+        else{
+            price=hold;
+        }
+        EditText mileageT = (EditText) findViewById(R.id.MileageEditText);
+        hold =mileageT.getText().toString();
+        if(hold.equals("")){
+            mileage="NULL";
+        }
+        else{
+            mileage=hold;
+        }
+        EditText cylindersT = (EditText) findViewById(R.id.cylindersEditText);
+        hold =cylindersT.getText().toString();
+        if(hold.equals("")){
+            cylinders="NULL";
+        }
+        else{
+            cylinders=hold;
+        }
+        EditText displacementT = (EditText) findViewById(R.id.EngineDisplacementEditText);
+        hold =displacementT.getText().toString();
+        if (hold.equals("")){
+            displacement="NULL";
+        }
+        else{
+            displacement=hold;
+        }
+        EditText hpT = (EditText) findViewById(R.id.HPEditText);
+        hold =hpT.getText().toString();
+        if(hold.equals("")){
+            hp="NULL";
+        }
+        else{
+            hp=hold;
+        }
+        EditText tqT = (EditText) findViewById(R.id.TorqueEditText);
+        hold =tqT.getText().toString();
+        if(hold.equals("")){
+            tq="NULL";
+        }
+        else{
+            tq=hold;
+        }
+        EditText zeroSixtyT = (EditText) findViewById(R.id.ZeroSixtyEditText);
+        hold =zeroSixtyT.getText().toString();
+        if(hold.equals("")){
+            zerosixty="NULL";
+        }
+        else{
+            zerosixty=hold;
+        }
+        EditText sixtyzeroT = (EditText) findViewById(R.id.SixtyZeroEditText);
+        hold =sixtyzeroT.getText().toString();
+        if(hold.equals("")){
+            sixtyzero="NULL";
+        }
+        else{
+            sixtyzero=hold;
+        }
+
+        EditText topspeedT = (EditText) findViewById(R.id.TopspeedEditText);
+        hold =topspeedT.getText().toString();
+        if(hold.equals("")){
+            topspeed="NULL";
+        }
+        else{
+            topspeed=hold;
+        }
+        EditText seatsT = (EditText) findViewById(R.id.SeatsEditText);
+        hold =seatsT.getText().toString();
+        if(hold.equals("")){
+            seats="NULL";
+        }
+        else{
+            seats=hold;
+        }
+        TextView pictureT = (TextView) findViewById(R.id.imageURI);
+        hold =pictureT.getText().toString();
+        if(hold.equals("")){
+            picture="NULL";
+        }
+        else{
+            picture=hold;
+        }
+
+        if(!year.equals("NULL")&&!price.equals("NULL")){
+
+//            Toast.makeText(SellActivity.this, make+","+model+","+year+","+price+","+mileage+" ,"+cylinders+","+displacement+","+
+//                          hp+","+tq+","+zerosixty+" ,"+topspeed+","+sixtyzero+","+seats+","+exterior+" ,"+interior
+//                            +","+drivetrain+" ,"+transmission+","+fuel+","+bodytype+","+picture+",,,"+useremail, Toast.LENGTH_LONG).show();
+            new CarPHPLoader(SellActivity.this).execute(make,model,year,price,mileage,cylinders,displacement,
+                    hp,tq,zerosixty,topspeed,sixtyzero,seats,exterior,interior,drivetrain,transmission,
+                    fuel,bodytype,picture,useremail);
+        }
+        //
+    }
+    private void createImageButton(){
+        ImageButton buttonLoadImage = (ImageButton) findViewById(R.id.searchImageButton);
+        buttonLoadImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data
+                )
+        {
+            Uri selectedImage = data.getData();
+          /*  String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+          //  ImageView imageView = (ImageView) findViewById(R.id.imageView);
+           // imageView.setImageURI(selectedImage);
+*/
+            TextView imageURI = (TextView) findViewById(R.id.imageURI);
+            imageURI.setText(selectedImage.toString());
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+
     }
 
     /** makes the MakeSpinner **/
     private void createMakeSpinner(){
         final String[] makeString = new String[]{
-                "Alfa Romeo","Aston Martin","Audi"
+                "Alfa Romeo","Aston Martin","Audi", "BMW","Chevrolet","Dodge","Ferrari","Honda"
         };
         int makePosition = 1;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //adds the listener to the spinner
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                String[] modelString= new String[]{"4C","Guilia"};;
+                String[] modelString= new String[]{""};
                 switch(position){
                     case 0:
                         modelString = new String[]{"4C","Guilia"};
                         break;
                     case 1:
                         modelString = new String[]{"DB4","DB5","DB7","DB9","Vanquish","Vantage","Rapide"};
+                        break;
+                    case 2:
+                        modelString = new String[]{
+                                "A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","RS4","RS5","RS6","RS7","S3","S4","S5","S6","S7","S8"
+                        };
+                        break;
+                    case 3:
+                        modelString = new String[]{
+                                "1 Series","2 Series","3 Series","4 Series","5 Series","6 Series","7 Series","8 Series","M1",
+                                "1M","M2","M3","M4","M5","M6","X1","X2","X3","X4","X5","X6"
+                        };
+                        break;
+                    case 4:
+                        modelString = new String[]{
+                                "Camaro","Cavalier","Cobalt","Corvette","Equinox","HHR","Impala","Malibu","S-10",
+                                "Silverado","Spark","SS","SSR","Suburban","Tahoe","TrailBlazer","Volt"
+                        };
+                        break;
+                    case 5:
+                        modelString = new String[]{
+                                "Avenger","Challenger","Charger","Dart","Durango","Grand Caravan","Intrepid","Neon","Ram 1500",
+                                "Ram 2500","Ram 3500","Viper","Stratus"
+                        };
+                        break;
+                    case 6:
+                        modelString = new String[]{
+                                "360","456","458","550","575","599","612 Scaglietti","California","Enzo",
+                                "F12 Berlinetta","F355","F430","F50","F40","FF","Superamerica"
+                        };
+                        break;
+                    case 7:
+                        modelString = new String[]{
+                                "Accord","Civic","CR-V","Crosstour","Element","Fit","HR-V","Insight","Odyssey",
+                                "Passport","Pilot","Prelude","Ridgeline","S2000"
+                        };
+                        break;
                 }
                 Spinner modelSpinner = (Spinner) findViewById(R.id.ModelSpinner);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(SellActivity.this,
                         android.R.layout.simple_spinner_item, modelString);
+                make = makeString[position];
+                final String[] resultString = modelString;
                 modelSpinner.setAdapter(adapter);
+                modelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
+
+                                                           @Override
+                                                           public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                                                               // TODO Auto-generated method stub
+                                                               model= resultString[position];
+
+                                                           }
+
+                                                           @Override
+                                                           public void onNothingSelected(AdapterView<?> arg0) {
+                                                               // TODO Auto-generated method stub
+
+                                                           }
+                                                       }
+                );
                 //Toast.makeText(getBaseContext(), makeString[position], Toast.LENGTH_SHORT).show();
 
 
@@ -80,7 +340,7 @@ public class SellActivity extends AppCompatActivity {
     /** This function will create the model Spinner*/
     private void createModelSpinner(){
         final String[] modelString = new String[]{
-                "This","Needs","To","Change","Based","On","Make","Selected"
+                "Select","This","Needs","To","Change","Based","On","Make","Selected"
         };
         int modelPosition =2;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -88,7 +348,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), modelString[position], Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -104,15 +364,16 @@ public class SellActivity extends AppCompatActivity {
     /** This function will create the year minimum Spinner*/
     private void createYearSpinner(){
         final String[] yearString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004"
+                ,"2003","2002","2001","2000"
         };
-        int yearPosition =3;
+        int yearMinPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), yearMinString[position], Toast.LENGTH_SHORT).show();
+                year= yearString[position];
 
             }
 
@@ -123,11 +384,11 @@ public class SellActivity extends AppCompatActivity {
             }
 
         };
-        createSpinner(R.id.YearSpinner, yearString, yearPosition, listener);
+        createSpinner(R.id.YearSpinner, yearString, yearMinPosition, listener);
     }
     private void createExteriorColorSpinner(){
         final String[] exteriorColorString = new String[]{
-                "1912","1913","1914","1873","1874","1875"
+                "Select","Blue","Green","Red","Black","White","Gold"
         };
         int exteriorColorPosition =3;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -135,7 +396,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), exteriorColorString[position], Toast.LENGTH_SHORT).show();
+                exterior = exteriorColorString[position];
 
             }
 
@@ -150,7 +411,7 @@ public class SellActivity extends AppCompatActivity {
     }
     private void createInteriorColorSpinner(){
         final String[] interiorColorString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Tan","Light Tan","Red","Black","White","Gold"
         };
         int interiorColorPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -158,7 +419,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),interiorColorString[position], Toast.LENGTH_SHORT).show();
+                interior=interiorColorString[position];
 
             }
 
@@ -173,7 +434,7 @@ public class SellActivity extends AppCompatActivity {
     }
     private void createDrivetrainSpinner(){
         final String[] drivetrainString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","FWD","AWD","RWD","4x4"
         };
         int drivetrainPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -181,7 +442,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),drivetrainString[position], Toast.LENGTH_SHORT).show();
+                drivetrain=drivetrainString[position];
 
             }
 
@@ -196,7 +457,7 @@ public class SellActivity extends AppCompatActivity {
     }
     private void createTransmissionSpinner(){
         final String[] transmissionString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Manual","Automatic","Other"
         };
         int transmissionPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -204,7 +465,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),transmissionString[position], Toast.LENGTH_SHORT).show();
+                transmission=transmissionString[position];
 
             }
 
@@ -219,7 +480,7 @@ public class SellActivity extends AppCompatActivity {
     }
     private void createFuelSpinner(){
         final String[] fuelString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Gasoline","E-85","Electric"
         };
         int fuelPosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -227,7 +488,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),fuelString[position], Toast.LENGTH_SHORT).show();
+                fuel=fuelString[position];
 
             }
 
@@ -242,7 +503,7 @@ public class SellActivity extends AppCompatActivity {
     }
     private void createBodyStyleSpinner(){
         final String[] bodyStyleString = new String[]{
-                "This","Needs","To","Change","Based","On","max","years"
+                "Select","Convertible","Coupe","Sedan","Wagon","Truck","SUV","Hatchback"
         };
         int bodyStylePosition =4;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -250,7 +511,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),bodyStyleString[position], Toast.LENGTH_SHORT).show();
+                bodytype=bodyStyleString[position];
 
             }
 
@@ -262,7 +523,6 @@ public class SellActivity extends AppCompatActivity {
 
         };
         createSpinner(R.id.bodyStyleSpinner, bodyStyleString, bodyStylePosition, listener);
-
     }
     //** takes variables to make the load spinner and give listener */
     private void createSpinner(int spinnerName, String[] spinnerString,
