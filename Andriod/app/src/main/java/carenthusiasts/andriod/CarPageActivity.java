@@ -115,7 +115,7 @@ public class CarPageActivity extends AppCompatActivity {
                         ListAdapter adapter = new SimpleAdapter(CarPageActivity.this, oslist,
                                 R.layout.list_tags,
                                 new String[] { TAG_VER,TAG_NAME, TAG_API }, new int[] {
-                                R.id.vers,R.id.name, R.id.api});
+                                R.id.vers,R.id.name, R.id.setcolor});
 
                         list.setAdapter(adapter);
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

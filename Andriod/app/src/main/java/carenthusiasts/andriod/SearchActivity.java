@@ -31,6 +31,67 @@ import java.util.concurrent.Callable;
 
 public class SearchActivity extends AppCompatActivity {
 
+    public static final String MAKE = "MAKE";
+    public static final String MODEL = "MODEL";
+    public static final String YEARMIN = "YEARMIN";
+    public static final String PRICEMIN ="PRICEMIN";
+    public static final String MILEAGEMIN = "MILEAGEMIN";
+    public static final String CYLINDERSMIN = "CYLINDERSMIN";
+    public static final String DISPLACEMENTMIN="DISPLACEMENTMIN";
+    public static final String HPMIN ="HPMIN";
+    public static final String TQMIN = "TQMIN";
+    public static final String ZEROSIXTYMIN = "ZEROSIXTYMIN";
+    public static final String TOPSPEEDMIN="TOPSPEEDMIN";
+    public static final String SIXTYZEROMIN = "SIXTYZEROMIN";
+    public static final String SEATSMIN = "SEATSMIN";
+    public static final String YEARMAX = "YEARMAX";
+    public static final String PRICEMAX= "PRICEMAX";
+    public static final String MILEAGEMAX ="MILEAGEMAX";
+    public static final String CYLINDERSMAX = "CYLINDERSMAX";
+    public static final String DISPLACEMENTMAX = "DISPLACEMENTMAX";
+    public static final String HPMAX = "HPMAX";
+    public static final String TQMAX = "TQMAX";
+    public static final String ZEROSIXTYMAX= "ZEROSIXTYMAX";
+    public static final String TOPSPEEDMAX= "TOPSPEEDMAX";
+    public static final String SIXTYZEROMAX = "SIXTYZEROMAX";
+    public static final String SEATSMAX = "SEATSMAX";
+    public static final String EXTERIOR = "EXTERIOR";
+    public static final String INTERIOR = "INTERIOR";
+    public static final String DRIVETRAIN = "DRIVETRAIN";
+    public static final String TRANSMISSION = "TRANSMISSION";
+    public static final String FUEL = "FUEL";
+    public static final String BODYTYPE = "BODYTYPE";
+
+    private String make = "null";
+    private String model = "null";
+    private String yearmin = "null";
+    private String pricemin ="null";
+    private String mileagemin = "null";
+    private String cylindersmin = "null";
+    private String displacementmin="null";
+    private String hpmin ="null";
+    private String tqmin = "null";
+    private String zerosixtymin = "null";
+    private String topspeedmin="null";
+    private String sixtyzeromin = "null";
+    private String seatsmin = "null";
+    private String yearmax = "null";
+    private String pricemax= "null";
+    private String mileagemax ="null";
+    private String cylindersmax = "null";
+    private String displacementmax = "null";
+    private String hpmax = "null";
+    private String tqmax = "null";
+    private String zerosixtymax= "null";
+    private String topspeedmax= "null";
+    private String sixtyzeromax = "null";
+    private String seatsmax = "null";
+    private String exterior = "null";
+    private String interior = "null";
+    private String drivetrain = "null";
+    private String transmission = "null";
+    private String fuel = "null";
+    private String bodytype = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +144,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                make = makeString[position];
                 String[] modelString= new String[]{""};
                 switch(position){
                     case 0:
@@ -126,6 +188,7 @@ public class SearchActivity extends AppCompatActivity {
                                 "Passport","Pilot","Prelude","Ridgeline","S2000"
                         };
                         break;
+
                 }
                 Spinner modelSpinner = (Spinner) findViewById(R.id.ModelSpinner);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(SearchActivity.this,
@@ -138,8 +201,8 @@ public class SearchActivity extends AppCompatActivity {
                    @Override
                    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                        // TODO Auto-generated method stub
-                       Toast.makeText(getBaseContext(), resultString[position], Toast.LENGTH_SHORT).show();
 
+                        model = resultString[position];
                    }
 
                    @Override
@@ -174,7 +237,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), ""+position, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -199,7 +262,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), yearMinString[position], Toast.LENGTH_SHORT).show();
+                yearmin= yearMinString[position];
 
             }
 
@@ -224,7 +287,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),yearMaxString[position], Toast.LENGTH_SHORT).show();
+                yearmax =yearMaxString[position];
 
             }
 
@@ -250,7 +313,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), priceMinString[position], Toast.LENGTH_SHORT).show();
+                pricemin= priceMinString[position];
 
             }
 
@@ -276,7 +339,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),priceMaxString[position], Toast.LENGTH_SHORT).show();
+                pricemax= priceMaxString[position];
 
             }
 
@@ -300,7 +363,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), mileageMinString[position], Toast.LENGTH_SHORT).show();
+                mileagemin =mileageMinString[position];
 
             }
 
@@ -324,7 +387,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),mileageMaxString[position], /.LENGTH_SHORT).show();
+                mileagemax =mileageMaxString[position];
 
             }
 
@@ -347,7 +410,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), cylindersMinString[position], Toast.LENGTH_SHORT).show();
+                cylindersmin= cylindersMinString[position];
 
             }
 
@@ -370,7 +433,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),cylindersMaxString[position], Toast.LENGTH_SHORT).show();
+                cylindersmax =cylindersMaxString[position];
 
             }
 
@@ -393,7 +456,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), exteriorColorString[position], Toast.LENGTH_SHORT).show();
+                exterior=exteriorColorString[position];
 
             }
 
@@ -416,7 +479,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),interiorColorString[position], Toast.LENGTH_SHORT).show();
+                interior = interiorColorString[position];
 
             }
 
@@ -439,7 +502,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),drivetrainString[position], Toast.LENGTH_SHORT).show();
+                drivetrain = drivetrainString[position];
 
             }
 
@@ -462,7 +525,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),transmissionString[position], Toast.LENGTH_SHORT).show();
+                transmission = transmissionString[position];
 
             }
 
@@ -485,7 +548,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),fuelString[position], Toast.LENGTH_SHORT).show();
+                fuel = fuelString[position];
 
             }
 
@@ -508,7 +571,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),bodyStyleString[position], Toast.LENGTH_SHORT).show();
+                 bodytype = bodyStyleString[position];
 
             }
 
@@ -531,7 +594,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), seatsMinString[position], Toast.LENGTH_SHORT).show();
+                seatsmin = seatsMinString[position];
 
             }
 
@@ -554,7 +617,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),seatsMaxString[position], Toast.LENGTH_SHORT).show();
+                seatsmax = seatsMaxString[position];
 
             }
 
@@ -577,7 +640,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), hpMinString[position], Toast.LENGTH_SHORT).show();
+                hpmin = hpMinString[position];
 
             }
 
@@ -600,7 +663,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),hpMaxString[position], Toast.LENGTH_SHORT).show();
+                hpmax = hpMaxString[position];
 
             }
 
@@ -623,7 +686,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), tqMinString[position], Toast.LENGTH_SHORT).show();
+                tqmin = tqMinString[position];
 
             }
 
@@ -646,7 +709,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),tqMaxString[position], Toast.LENGTH_SHORT).show();
+                tqmax = tqMaxString[position];
 
             }
 
@@ -669,7 +732,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), engineDisplacementMinString[position], Toast.LENGTH_SHORT).show();
+                displacementmin = engineDisplacementMinString[position];
 
             }
 
@@ -692,7 +755,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),engineDisplacementMaxString[position], Toast.LENGTH_SHORT).show();
+                displacementmax = engineDisplacementMaxString[position];
 
             }
 
@@ -715,7 +778,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), zeroSixtyMinString[position], Toast.LENGTH_SHORT).show();
+                zerosixtymin = zeroSixtyMinString[position];
 
             }
 
@@ -738,7 +801,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),zeroSixtyMaxString[position], Toast.LENGTH_SHORT).show();
+                zerosixtymax = zeroSixtyMaxString[position];
 
             }
 
@@ -761,7 +824,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), topSpeedMinString[position], Toast.LENGTH_SHORT).show();
+                topspeedmin = topSpeedMinString[position];
 
             }
 
@@ -784,7 +847,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),topSpeedMaxString[position], Toast.LENGTH_SHORT).show();
+                topspeedmax = topSpeedMaxString[position];
 
             }
 
@@ -807,7 +870,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(), sixtyZeroMinString[position], Toast.LENGTH_SHORT).show();
+                sixtyzeromin = sixtyZeroMinString[position];
 
             }
 
@@ -830,7 +893,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getBaseContext(),sixtyZeroMaxString[position], Toast.LENGTH_SHORT).show();
+                sixtyzeromax = sixtyZeroMaxString[position];
 
             }
 
@@ -847,8 +910,38 @@ public class SearchActivity extends AppCompatActivity {
         final Button SearchButton = (Button) findViewById(R.id.nextButton);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Intent i = new Intent(getBaseContext(), SearchTagActivity.class);
-                //i.putExtra("PersonID", personID);
+                i.putExtra("MAKE", make);
+                i.putExtra("MODEL",model);
+                i.putExtra("YEARMIN",yearmin);
+                i.putExtra("PRICEMIN",pricemin);
+                i.putExtra("MILEAGEMIN",mileagemin);
+                i.putExtra("CYLINDERSMIN",cylindersmin);
+                i.putExtra("DISPLACEMENTMIN",displacementmin);
+                i.putExtra("HPMIN",hpmin);
+                i.putExtra("TQMIN",tqmin);
+                i.putExtra("ZEROSIXTYMIN",zerosixtymin);
+                i.putExtra("TOPSPEEDMIN",topspeedmin);
+                i.putExtra("SIXTYZEROMIN",sixtyzeromin);
+                i.putExtra("SEATSMIN",seatsmin);
+                i.putExtra("YEARMAX",yearmax);
+                i.putExtra("PRICEMAX",pricemax);
+                i.putExtra("MILEAGEMAX",mileagemax);
+                i.putExtra("CYLINDERSMAX",cylindersmax);
+                i.putExtra("DISPLACEMENTMAX",displacementmax);
+                i.putExtra("HPMAX", hpmax);
+                i.putExtra("TQMAX",tqmax);
+                i.putExtra("ZEROSIXTYMAX", zerosixtymax);
+                i.putExtra("TOPSPEEDMAX",topspeedmax);
+                i.putExtra("SIXTYZEROMAX",sixtyzeromax);
+                i.putExtra("SEATSMAX",seatsmax);
+                i.putExtra("EXTERIOR",exterior);
+                i.putExtra("INTERIOR",interior);
+                i.putExtra("DRIVETRAIN",drivetrain);
+                i.putExtra("TRANSMISSION",transmission);
+                i.putExtra("FUEL",fuel);
+                i.putExtra("BODYTYPE",bodytype);
                 startActivity(i);
             }
         });

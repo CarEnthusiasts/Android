@@ -51,10 +51,10 @@ public class ProfileActivity extends AppCompatActivity {
         oslist = new ArrayList<HashMap<String, String>>();
 
         searchOslist = new ArrayList<HashMap<String, String>>();
-        new JSONParseCars().execute();
-        new JSONParseSearch().execute();
+//        new JSONParseCars().execute();
+//        new JSONParseSearch().execute();
     }
-
+/*
     private class JSONParseCars extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
         @Override
@@ -232,5 +232,5 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
         }
-    }
+    }*/
 }

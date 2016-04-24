@@ -23,27 +23,24 @@
         android:layout_weight=".3">
 
         <TextView
-            android:id="@+id/vers"
+            android:id="@+id/setyear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="year"
             />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/setmake"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Make"
             />
 
         <TextView
-            android:id="@+id/api"
+            android:id="@+id/setmodel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Model"
             />
 
     </LinearLayout>
@@ -57,21 +54,21 @@
         android:layout_weight=".3">
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/setprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 
         <TextView
-            android:id="@+id/mileage"
+            android:id="@+id/setmileage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 
         <TextView
-            android:id="@+id/color"
+            android:id="@+id/setcolor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
