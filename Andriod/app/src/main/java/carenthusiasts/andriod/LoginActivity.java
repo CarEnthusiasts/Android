@@ -24,9 +24,16 @@ public class LoginActivity extends AppCompatActivity {
         Button LoginButton = (Button) findViewById(R.id.loginButton);
         LoginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), SellActivity.class);
-                //i.putExtra("PersonID", personID);
-                startActivity(i);
+                String passWord = editPassword.getText().toString();
+                String emailAddress = editEmail.getText().toString();
+
+                if (!passWord.isEmpty()  && !emailAddress.isEmpty()){
+                    new LoginAttempt(LoginActivity.this).execute(emailAddress, passWord);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "Please fill in both email, and password", Toast.LENGTH_LONG).show();
+
+                }
             }
         });
 

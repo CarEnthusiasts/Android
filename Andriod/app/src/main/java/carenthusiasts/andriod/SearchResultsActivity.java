@@ -462,7 +462,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                                                     int position, long id) {
                                 Toast.makeText(SearchResultsActivity.this, "You Clicked at " + oslist.get(+position).get(TAG_CARID), Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getBaseContext(), CarPageActivity.class);
-                                String carid = oslist.get(+position).get("TAG_CARID");
+                                String carid = oslist.get(+position).get(TAG_CARID).toString();
                                 i.putExtra("CARID", carid );
                                 startActivity(i);
                             }

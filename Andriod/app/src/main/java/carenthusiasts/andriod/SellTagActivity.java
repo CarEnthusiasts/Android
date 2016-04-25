@@ -23,6 +23,10 @@ public class SellTagActivity extends AppCompatActivity {
     private String description = "NULL";
     private String carid = "NULL";
 
+    private Spinner TagCategorySpinner;
+    private Spinner TagSpinner;
+    private TextInputEditText descriptionText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,7 @@ public class SellTagActivity extends AppCompatActivity {
             carid= (String) savedInstanceState.getSerializable("CARID");
         }
         setContentView(R.layout.activity_sell_tag);
+        createNewSpinners();
         createAddTagButton();
         createSearchButton();
     }
@@ -46,7 +51,18 @@ public class SellTagActivity extends AppCompatActivity {
         final Button addTagButton = (Button) findViewById(R.id.AddTagButton);
         addTagButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                createNewSpinners();
+                category = TagCategorySpinner.getSelectedItem().toString();
+                tag = TagSpinner.getSelectedItem().toString();
+                description = descriptionText.getText().toString();
+
+                if(category.equals("Select") || tag.equals("Select")) {
+                    Toast.makeText(getBaseContext(), "Please select a tag type", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    new TagPHPLoader(SellTagActivity.this).execute(category, tag, description, carid);
+                    createNewSpinners();
+                }
+
             }
         });
     }
@@ -54,7 +70,7 @@ public class SellTagActivity extends AppCompatActivity {
         final Button SearchButton = (Button) findViewById(R.id.SearchButton);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), SearchResultsActivity.class);
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
                 //i.putExtra("PersonID", personID);
                 startActivity(i);
             }
@@ -78,10 +94,10 @@ public class SellTagActivity extends AppCompatActivity {
 
         TextView tagName = new TextView(SellTagActivity.this);
         tagName.setText("Select new tag: ");
-        tagName.setTextAppearance(this,android.R.style.TextAppearance_Medium);  //deprecated but new version without passing This requires api 23+
-        Spinner TagCategorySpinner = new Spinner(SellTagActivity.this);
+        tagName.setTextAppearance(this, android.R.style.TextAppearance_Medium);  //deprecated but new version without passing This requires api 23+
+        TagCategorySpinner = new Spinner(SellTagActivity.this);
 
-        final Spinner TagSpinner = new Spinner(SellTagActivity.this);
+        TagSpinner = new Spinner(SellTagActivity.this);
 
         final String[] arraySpinner =  {"Select","Engine","Suspension","Interior","Bodywork","Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -158,7 +174,6 @@ public class SellTagActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getBaseContext(), arraySpinner[position], Toast.LENGTH_SHORT).show();
 
             }
 
@@ -175,31 +190,9 @@ public class SellTagActivity extends AppCompatActivity {
         Description.setText("Description: ");
         Description.setTextAppearance(this, android.R.style.TextAppearance_Medium);
 
-        final TextInputEditText descriptionText = new TextInputEditText(SellTagActivity.this);
+        descriptionText = new TextInputEditText(SellTagActivity.this);
         descriptionText.setWidth(600);
-        descriptionText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    String hold =descriptionText.getText().toString();
-                    if(hold.equals("")){
-                        description="NULL";
-                    }
-                    else{
-                        description=hold;
-                    }
-                    if(category.equals("Select")){
-                        category="NULL";
-                    }
-                    if(tag.equals("Select")){
-                        tag="NULL";
-                    }
-
-                    new TagPHPLoader(SellTagActivity.this).execute(category,tag,description,carid);
-                }
-
-            }
-        });
         newTagContainer.addView(tagName);
         newTagContainer.addView(TagCategorySpinner);
         newTagContainer.addView(TagSpinner);

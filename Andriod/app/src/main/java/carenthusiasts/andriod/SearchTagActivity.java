@@ -150,8 +150,6 @@ public class SearchTagActivity extends AppCompatActivity {
         final Button addTagButton = (Button) findViewById(R.id.AddTagButton);
         addTagButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), TagSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getBaseContext(), TagCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
                 tag[count]=TagSpinner.getSelectedItem().toString();
                 count ++;

@@ -2,6 +2,8 @@ package carenthusiasts.andriod;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -56,6 +60,8 @@ public class CarPageActivity extends AppCompatActivity {
     TextView sixtyzero;
     TextView email;
 
+    Drawable drawable;
+
     TextView api;
     Button Btngetdata;
     ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
@@ -84,7 +90,7 @@ public class CarPageActivity extends AppCompatActivity {
     }
     private void loadTags(){
         oslist = new ArrayList<HashMap<String, String>>();
-       //new JSONParseTags().execute();
+        new JSONParseTags().execute();
     }
     private class JSONParsePage extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
@@ -157,6 +163,23 @@ public class CarPageActivity extends AppCompatActivity {
                         String resultString = jsonArray.getString(i);
                         JSONObject jsonObj = new JSONObject(resultString);
 
+                        String imageuri = jsonObj.getString("picture");
+                        /*if(imageuri.equals("NULL")){
+                            drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                        }
+                        else{
+                            try {
+                                Uri myUri = Uri.parse(imageuri);
+                                FileInputStream fis = new FileInputStream(new File("content://media/external/images/media/9382"));
+                                drawable = Drawable.createFromPath(fis.toString());
+                                fis.close();
+                            } catch (Exception e) {
+                                Toast.makeText(CarPageActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                            }
+                        }*/
+                        
+                        carimage.setImageDrawable(drawable);
                         price.setText(jsonObj.getString("price"));
                         make.setText(jsonObj.getString("make"));
                         model.setText(jsonObj.getString("model"));
