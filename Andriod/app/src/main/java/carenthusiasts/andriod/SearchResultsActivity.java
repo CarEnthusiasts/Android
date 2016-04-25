@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +29,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -43,17 +49,22 @@ public class SearchResultsActivity extends AppCompatActivity {
     TextView setprice;
     TextView setmileage;
     TextView setcolor;
+    TextView setcarid;
     ImageView setimage;
     ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
 
-
+    private static final String CARID = "CARID";
     //JSON Node Names
-//    private static final String TAG_VER = "ver";
-//    private static final String TAG_NAME = "name";
-//    private static final String TAG_API = "api";
-//    private static final String TAG_VER = "ver";
-//    private static final String TAG_NAME = "name";
-//    private static final String TAG_API = "api";
+    private static final String TAG_MAKE = "make";
+    private static final String TAG_MODEL = "model";
+    private static final String TAG_CARID= "carid";
+    private static final String TAG_YEAR = "yearmade";
+    private static final String TAG_MILEAGE = "mileage";
+    private static final String TAG_EXTERIOR= "exterior";
+    private static final String TAG_PICTURE= "picture";
+    private static final String TAG_PRICE= "price";
+
+
 
     JSONArray android = null;
 
@@ -97,6 +108,8 @@ public class SearchResultsActivity extends AppCompatActivity {
     private String tag8 ="Select";
     private String tag9 ="Select";
     private String tag10 ="Select";
+
+
 
 
     @Override
@@ -163,6 +176,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            setcarid = (TextView)findViewById(R.id.hiddencarid);
             setmake = (TextView)findViewById(R.id.setmake);
             setmodel = (TextView)findViewById(R.id.setmodel);
             setyear = (TextView)findViewById(R.id.setyear);
@@ -369,6 +383,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
             pDialog.dismiss();
             String jsonStr = result;
             if (jsonStr != null) {
@@ -387,30 +402,68 @@ public class SearchResultsActivity extends AppCompatActivity {
                         String exterior = jsonObj.getString("exterior");
                         String picture = jsonObj.getString("picture");
 
+                        if(make.equals("NULL")){
+                            make ="Unknown";
+                        }
+                        if(model.equals("NULL")){
+                            model ="Unknown";
+                        }
+                        if(year.equals("NULL")){
+                            year ="Unknown";
+                        }
+                        if(price.equals("NULL")){
+                            price ="Price";
+                        }
+                        if(mileage.equals("NULL")){
+                            mileage ="Mileage";
+                        }
+                        if(exterior.equals("NULL")){
+                            exterior ="Color";
+                        }
+                        if(picture.equals("NULL")){
+                            picture ="Unknown";
+                        }
+                        else{
+                            try {
+
+                                Uri myUri = Uri.parse(picture);
+                                File filePath = getFileStreamPath(picture);
+                                drawable = Drawable.createFromPath(filePath.toString());
+                            } catch (Exception e) {
+                                drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                            }
+                        }
 
                         HashMap<String, String> map = new HashMap<String, String>();
 
-//                        map.put(TAG_VER, ver);
-//                        map.put(TAG_NAME, name);
-//                        map.put(TAG_API, api);
+                        map.put(TAG_CARID,carid);
+                        map.put(TAG_MAKE, make);
+                        map.put(TAG_MODEL, model);
+                        map.put(TAG_YEAR, year);
+                        map.put(TAG_PRICE, price);
+                        map.put(TAG_MILEAGE, mileage);
+                        map.put(TAG_EXTERIOR, exterior);
+                        map.put(TAG_PICTURE, picture);
 
                         oslist.add(map);
                         list=(ListView)findViewById(R.id.list);
 
-//                        ListAdapter adapter = new SimpleAdapter(SearchResultsActivity.this, oslist,
-//                                R.layout.list_cars,
-//                                new String[] { TAG_VER,TAG_NAME, TAG_API }, new int[] {
-//                                R.id.vers,R.id.name, R.id.api});
+                        ListAdapter adapter = new SimpleAdapter(SearchResultsActivity.this, oslist,
+                                R.layout.list_cars,
+                                new String[] {TAG_CARID,TAG_MAKE,TAG_MODEL,TAG_YEAR,TAG_PRICE,TAG_MILEAGE,TAG_EXTERIOR,
+                                        TAG_PICTURE }, new int[] {R.id.hiddencarid, R.id.setmake, R.id.setmodel, R.id.setyear, R.id.setprice
+                        , R.id.setmileage, R.id.setcolor, R.id.imageView2});
 
-                        //list.setAdapter(adapter);
+                        list.setAdapter(adapter);
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view,
                                                     int position, long id) {
-                                Toast.makeText(SearchResultsActivity.this, "You Clicked at " + oslist.get(+position).get("name"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchResultsActivity.this, "You Clicked at " + oslist.get(+position).get(TAG_CARID), Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getBaseContext(), CarPageActivity.class);
-                                //i.putExtra("PersonID", personID);
+                                String carid = oslist.get(+position).get("TAG_CARID");
+                                i.putExtra("CARID", carid );
                                 startActivity(i);
                             }
                         });
