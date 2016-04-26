@@ -61,7 +61,9 @@ public class SearchActivity extends AppCompatActivity {
     public static final String TRANSMISSION = "TRANSMISSION";
     public static final String FUEL = "FUEL";
     public static final String BODYTYPE = "BODYTYPE";
+    public static final String USER="USER";
 
+    private String useremail = "0";
     private String make = "null";
     private String model = "null";
     private String yearmin = "null";
@@ -98,7 +100,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_search);
-
+        useremail = intent.getStringExtra("USER");
 
         createMakeSpinner();
         createModelSpinner();
@@ -305,7 +307,7 @@ public class SearchActivity extends AppCompatActivity {
         final String[] priceMinString = new String[]{
                 "Select","$1000","$2000","$3000","$4000","$5000","$6000","$7000","$8000","$9000","$10000",
                 "$11000","$12000","$13000","$14000","$15000","$16000","$17000","$18000","$19000","$20000"
-                ,"$25000","$30000","35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","100000"
+                ,"$25000","$30000","$35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","$100000"
         };
         int priceMinPosition =5;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -314,7 +316,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 pricemin= priceMinString[position];
-
+                if(!pricemin.equals("Select")){
+                    if (pricemin.startsWith("$")) {
+                        pricemin = pricemin.substring(1, pricemin.length());
+                    }
+                }
             }
 
             @Override
@@ -331,7 +337,7 @@ public class SearchActivity extends AppCompatActivity {
         final String[] priceMaxString = new String[]{
                 "Select","$1000","$2000","$3000","$4000","$5000","$6000","$7000","$8000","$9000","$10000",
                 "$11000","$12000","$13000","$14000","$15000","$16000","$17000","$18000","$19000","$20000"
-                ,"$25000","$30000","35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","100000"
+                ,"$25000","$30000","$35000","$40000","$45000","$50000","$55000","$60000","$70000","$80000","$90000","100000"
         };
         int priceMaxPosition =6;
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {    //int the listener for the spinner
@@ -340,7 +346,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 pricemax= priceMaxString[position];
-
+                if(!pricemax.equals("Select")){
+                    if (pricemax.startsWith("$")) {
+                        pricemax = pricemax.substring(1, pricemax.length());
+                    }
+                }
             }
 
             @Override
@@ -733,7 +743,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 displacementmin = engineDisplacementMinString[position];
-
+                if(!displacementmin.equals("Select")){
+                    if (displacementmin.endsWith("L")) {
+                        displacementmin = displacementmin.substring(0, displacementmin.length() - 1);
+                    }
+                }
             }
 
             @Override
@@ -756,7 +770,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 displacementmax = engineDisplacementMaxString[position];
-
+                if(!displacementmax.equals("Select")){
+                    if (displacementmax.endsWith("L")) {
+                        displacementmax = displacementmax.substring(0, displacementmax.length() - 1);
+                    }
+                }
             }
 
             @Override
@@ -779,7 +797,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 zerosixtymin = zeroSixtyMinString[position];
-
+                if(!zerosixtymin.equals("Select")){
+                    if (zerosixtymin.endsWith("s")) {
+                        zerosixtymin = zerosixtymin.substring(0, zerosixtymin.length() - 1);
+                    }
+                }
             }
 
             @Override
@@ -802,7 +824,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 zerosixtymax = zeroSixtyMaxString[position];
-
+                if(!zerosixtymax.equals("Select")){
+                    if (zerosixtymax.endsWith("s")) {
+                        zerosixtymax = zerosixtymax.substring(0, zerosixtymax.length() - 1);
+                    }
+                }
             }
 
             @Override
@@ -871,7 +897,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
                 sixtyzeromin = sixtyZeroMinString[position];
-
+                if(!sixtyzeromin.equals("Select")){
+                    if (sixtyzeromin.endsWith("ft")) {
+                        sixtyzeromin = sixtyzeromin.substring(0, sixtyzeromin.length() - 2);
+                    }
+                }
             }
 
             @Override
@@ -893,7 +923,13 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
+
                 sixtyzeromax = sixtyZeroMaxString[position];
+                if(!sixtyzeromax.equals("Select")){
+                    if (sixtyzeromax.endsWith("ft")) {
+                        sixtyzeromax = sixtyzeromax.substring(0, sixtyzeromax.length() - 2);
+                    }
+                }
 
             }
 
@@ -942,6 +978,7 @@ public class SearchActivity extends AppCompatActivity {
                 i.putExtra("TRANSMISSION",transmission);
                 i.putExtra("FUEL",fuel);
                 i.putExtra("BODYTYPE",bodytype);
+                i.putExtra("USER",useremail);
                 startActivity(i);
             }
         });
@@ -958,30 +995,6 @@ public class SearchActivity extends AppCompatActivity {
         s.setOnItemSelectedListener(listener);
 
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_profile) {
-            Intent i = new Intent(getBaseContext(), ProfileActivity.class);
-            //i.putExtra("PersonID", personID);
-            startActivity(i);
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 }

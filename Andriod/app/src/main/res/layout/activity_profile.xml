@@ -107,17 +107,16 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="300dp">
         <ListView
             android:id="@+id/listCars"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary" />
+            android:layout_height="wrap_content" />
     </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="1dp">
         <ListView
             android:id="@+id/listSearch"
             android:layout_marginTop="20dp"
@@ -131,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Logout"
             android:id="@+id/LogoutButton"
-            android:layout_gravity="right" />
+            android:layout_gravity="bottom|right" />
 
     </LinearLayout>
     </ScrollView>

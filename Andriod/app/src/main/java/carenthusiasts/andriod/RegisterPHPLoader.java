@@ -22,8 +22,9 @@ import java.net.URLEncoder;
 public class RegisterPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;
-    public static final String USER = "USERNAME";
+    public static final String USER = "USER";
     private String emailAddress;
+    private String previous ="0";
 
     public RegisterPHPLoader(Context context) {
         this.context = context;
@@ -37,6 +38,7 @@ public class RegisterPHPLoader extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... arg0) {
         emailAddress = arg0[0];
         String password = arg0[1];
+        previous = arg0[2];
 
         String link;
         String data;
@@ -70,10 +72,24 @@ public class RegisterPHPLoader extends AsyncTask<String, Void, String> {
                 JSONObject jsonObj = new JSONObject(jsonStr);
                 String query_result = jsonObj.getString("query_result");
                 if (query_result.equals("SUCCESS")) {
-                    Toast.makeText(context, "Data inserted successfully. Registration successfull.", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(context, SellActivity.class);
-                    i.putExtra("USER", emailAddress);
-                    context.startActivity(i);
+                    Toast.makeText(context, "Registration successfull.", Toast.LENGTH_SHORT).show();
+                    if(previous.equals("0")) {
+                        Intent i = new Intent(context, SellActivity.class);
+                        i.putExtra("USER", emailAddress);
+                        context.startActivity(i);
+                    }
+                    else{
+                        if(previous.equals("1")){
+                            Intent i = new Intent(context, ProfileActivity.class);
+                            i.putExtra("USER", emailAddress);
+                            context.startActivity(i);
+                        }
+                        else{
+                            Intent i = new Intent(context, SearchResultsActivity.class);
+                            i.putExtra("USER", emailAddress);
+                            context.startActivity(i);
+                        }
+                    }
                 } else if (query_result.equals("FAILURE")) {
                     Toast.makeText(context, "Email already in use please login.", Toast.LENGTH_SHORT).show();
                 } else {

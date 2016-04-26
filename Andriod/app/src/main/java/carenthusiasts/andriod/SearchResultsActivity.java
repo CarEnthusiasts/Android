@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -54,6 +56,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
 
     private static final String CARID = "CARID";
+    private static final String USER = "USER";
     //JSON Node Names
     private static final String TAG_MAKE = "make";
     private static final String TAG_MODEL = "model";
@@ -67,6 +70,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
 
     JSONArray android = null;
+
+    private String useremail="0";
 
     private String make = "Select";
     private String model = "Select";
@@ -110,15 +115,54 @@ public class SearchResultsActivity extends AppCompatActivity {
     private String tag10 ="Select";
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
         getextras();
-
+        loadButtons();
         loadCars(savedInstanceState);
+    }
+    private  void loadButtons(){
+        Button newSearchButton = (Button) findViewById(R.id.newSearchButton);
+        newSearchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), SearchActivity.class);
+                i.putExtra("USER", useremail);
+                startActivity(i);
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_profile) {
+            if(useremail.equals("0")){
+                Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                i.putExtra("PREVIOUS", "1");
+                startActivity(i);
+            }
+            else {
+                Intent i = new Intent(getBaseContext(), ProfileActivity.class);
+                i.putExtra("USER", useremail);
+                startActivity(i);
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     private void getextras(){
         Intent i = getIntent();
@@ -163,6 +207,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         tag8 = i.getStringExtra("TAG8");
         tag9 = i.getStringExtra("TAG9");
         tag10 = i.getStringExtra("TAG10");
+        useremail = i.getStringExtra("USER");
     }
     private void loadCars(Bundle savedInstanceState){
 
@@ -393,12 +438,12 @@ public class SearchResultsActivity extends AppCompatActivity {
                     {
                         String resultString = jsonArray.getString(i);
                         JSONObject jsonObj = new JSONObject(resultString);
-                        String carid = jsonObj.getString("carid");
+                        String carid =jsonObj.getString("carid");
                         String make = jsonObj.getString("make");
                         String model = jsonObj.getString("model");
                         String year = jsonObj.getString("yearmade");
-                        String price = jsonObj.getString("price");
-                        String mileage = jsonObj.getString("mileage");
+                        String price ="$ "+ jsonObj.getString("price");
+                        String mileage = jsonObj.getString("mileage")+ " Miles";
                         String exterior = jsonObj.getString("exterior");
                         String picture = jsonObj.getString("picture");
 
@@ -460,7 +505,6 @@ public class SearchResultsActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view,
                                                     int position, long id) {
-                                Toast.makeText(SearchResultsActivity.this, "You Clicked at " + oslist.get(+position).get(TAG_CARID), Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getBaseContext(), CarPageActivity.class);
                                 String carid = oslist.get(+position).get(TAG_CARID).toString();
                                 i.putExtra("CARID", carid );

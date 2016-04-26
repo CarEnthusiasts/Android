@@ -47,6 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorBlackText"
                         android:textSize="14pt"
                         android:text="$124000"
                         android:id="@+id/priceText"
@@ -68,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/makeText"
                     android:layout_column="1" />
@@ -89,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/modelText"
                     android:layout_column="1" />
@@ -110,6 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/yearText"
                     android:layout_column="1" />
@@ -130,6 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorBlackText"
                         android:text="Medium Text"
                         android:id="@+id/mileageText"
                         android:layout_column="1" />
@@ -160,6 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/exteriorColorText"
                     android:layout_column="1" />
@@ -179,6 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/bodyStyleText"
                     android:layout_column="1" />
@@ -198,6 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/seatsText"
                     android:layout_column="1" />
@@ -217,6 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/interiorColorText"
                     android:layout_column="1" />
@@ -237,6 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/drivetrainText"
                     android:layout_column="1" />
@@ -256,6 +266,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/transmissionText"
                     android:layout_column="1" />
@@ -268,13 +279,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Engine Displacement "
+                    android:text="Engine Displacement: "
                     android:layout_column="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/engineDisplacementText"
                     android:layout_column="1" />
@@ -294,6 +306,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/cylinderText"
                     android:layout_column="1" />
@@ -313,6 +326,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/horsepowerText"
                     android:layout_column="1" />
@@ -332,6 +346,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/torqueText"
                     android:layout_column="1" />
@@ -351,6 +366,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/fuelText"
                     android:layout_column="1" />
@@ -370,6 +386,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/zeroSixtyText"
                     android:layout_column="1" />
@@ -389,6 +406,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/topSpeedText"
                     android:layout_column="1" />
@@ -401,13 +419,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="60-0 Time"
+                    android:text="60-0 Distance:"
                     android:layout_column="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorBlackText"
                     android:text="Medium Text"
                     android:id="@+id/SixtyZeroText"
                     android:layout_column="1" />
@@ -418,7 +437,7 @@
             android:id="@+id/listTags"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="150dp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -441,6 +460,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorBlackText"
                 android:text="Medium Text"
                 android:id="@+id/emailText"
                 android:layout_column="1" />

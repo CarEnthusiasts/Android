@@ -27,7 +27,10 @@ public class CarPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;
 
+    public static final String USER = "USER";
     public static final String CARID = "USERNAME";
+
+    private String useremail;
     public CarPHPLoader(Context context) {
         this.context = context;
     }
@@ -58,7 +61,7 @@ public class CarPHPLoader extends AsyncTask<String, Void, String> {
         String fuel = arg0[17];
         String bodytype = arg0[18];
         String picture = arg0[19];
-        String useremail = arg0[20];
+        useremail = arg0[20];
 
         String link;
         String data;
@@ -114,6 +117,7 @@ public class CarPHPLoader extends AsyncTask<String, Void, String> {
                 if (!query_result.equals("0")) {
                     Toast.makeText(context, "car loaded", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context, SellTagActivity.class);
+                    i.putExtra("USER",useremail);
                     i.putExtra("CARID", query_result);
                     context.startActivity(i);
                 } else if (query_result.equals("0")) {

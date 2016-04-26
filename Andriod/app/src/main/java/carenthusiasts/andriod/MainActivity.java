@@ -13,10 +13,26 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String USER = "USER";
+    public static final String PREVIOUS ="PREVIOUS";
+    private String useremail = "0";
+    private String previous = "0";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        try{
+            useremail = intent.getStringExtra("USER");
+            if(useremail.equals("null")){
+                useremail="0";
+            }
+        }
+        catch (Exception e){
+            useremail = "0";
+        }
+        previous = "0";
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -24,16 +40,23 @@ public class MainActivity extends AppCompatActivity {
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), SearchActivity.class);
-                //i.putExtra("PersonID", personID);
+                i.putExtra("USER", useremail);
                 startActivity(i);
             }
         });
         Button SellButton = (Button) findViewById(R.id.SellButton);
         SellButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), LoginActivity.class);
-                //i.putExtra("PersonID", personID);
-                startActivity(i);
+                if(useremail.equals("0")) {
+                    Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                    i.putExtra("PREVIOUS", previous);
+                    startActivity(i);
+                }
+                else{
+                    Intent i = new Intent(getBaseContext(), SellActivity.class);
+                    i.putExtra("USER", useremail);
+                    startActivity(i);
+                }
             }
         });
 
@@ -57,9 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_profile) {
-            Intent i = new Intent(getBaseContext(), ProfileActivity.class);
-            //i.putExtra("PersonID", personID);
-            startActivity(i);
+            if(useremail.equals("0")){
+                previous = "1";
+                Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                i.putExtra("PREVIOUS", previous);
+                startActivity(i);
+            }
+            else {
+                Intent i = new Intent(getBaseContext(), ProfileActivity.class);
+                i.putExtra("USER", useremail);
+                startActivity(i);
+            }
         }
 
         return super.onOptionsItemSelected(item);

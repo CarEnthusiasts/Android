@@ -11,10 +11,14 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editPassword,editEmail;
+    private String previousaction="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Intent intent= getIntent();
+        previousaction = intent.getStringExtra("PREVIOUS");
+        intent.removeExtra("PREVIOUS");
         loadButtons();
     }
     public void loadButtons(){
@@ -28,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emailAddress = editEmail.getText().toString();
 
                 if (!passWord.isEmpty()  && !emailAddress.isEmpty()){
-                    new LoginAttempt(LoginActivity.this).execute(emailAddress, passWord);
+                    new LoginAttempt(LoginActivity.this).execute(emailAddress, passWord,previousaction);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Please fill in both email, and password", Toast.LENGTH_LONG).show();
@@ -44,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emailAddress = editEmail.getText().toString();
 
                 if (!passWord.isEmpty()  && !emailAddress.isEmpty()){
-                    new RegisterPHPLoader(LoginActivity.this).execute(emailAddress, passWord);
+                    new RegisterPHPLoader(LoginActivity.this).execute(emailAddress, passWord,previousaction);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Please fill in both email, and password", Toast.LENGTH_LONG).show();

@@ -74,12 +74,8 @@ public class TagPHPLoader extends AsyncTask<String, Void, String> {
                 JSONObject jsonObj = new JSONObject(jsonStr);
                 String query_result = jsonObj.getString("query_result");
 
-                if (query_result.equals("SUCCESS")) {
-                    Toast.makeText(context, "Data inserted successfully. Signup successfull.", Toast.LENGTH_SHORT).show();
-                } else if (query_result.equals("FAILURE")) {
-                    Toast.makeText(context, "Data could not be inserted. Signup failed.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Couldn't connect to remote database.", Toast.LENGTH_SHORT).show();
+                if (query_result.equals("FAILURE")) {
+                    Toast.makeText(context, "Data could not be inserted.", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

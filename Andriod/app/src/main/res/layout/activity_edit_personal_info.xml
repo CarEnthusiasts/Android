@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="useremail@user.com"
-            android:id="@+id/emailText" />
+            android:id="@+id/editEmailText" />
 
     </LinearLayout>
     <LinearLayout
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="bob"
-            android:id="@+id/firstNameText" />
+            android:id="@+id/editFirstNameText" />
 
 
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="smith"
-            android:id="@+id/lastNameText" />
+            android:id="@+id/editLastNameText" />
 
 
     </LinearLayout>

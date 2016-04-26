@@ -10,4 +10,5 @@
     <color name="colorCarResultList">#CCCCCC</color>
     <color name="colorSearchResultList">#CCCCCC</color>
     <color name="colorWhiteText">#FFFFFF</color>
+    <color name="colorBlackText">#000000</color>
 </resources>

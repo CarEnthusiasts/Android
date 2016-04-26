@@ -36,7 +36,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/MakeSpinner" />
+                android:id="@+id/MakeSpinner"
+                style="@style/spinner_style"/>
 
         </LinearLayout>
 
@@ -60,7 +61,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ModelSpinner" />
+                android:id="@+id/ModelSpinner"
+                style="@style/spinner_style" />
 
         </LinearLayout>
 
@@ -84,7 +86,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/YearSpinner" />
+                android:id="@+id/YearSpinner"
+                style="@style/spinner_style"/>
 
         </LinearLayout>
 
@@ -103,13 +106,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Price: " />
+                android:text="Price: $" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/PriceEditText" />
 
         </LinearLayout>
@@ -128,8 +132,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/MileageEditText" />
 
         </LinearLayout>
@@ -148,8 +153,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/cylindersEditText" />
 
         </LinearLayout>
@@ -167,8 +173,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/EngineDisplacementEditText" />
 
         </LinearLayout>
@@ -187,8 +194,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/HPEditText" />
 
         </LinearLayout>
@@ -206,8 +214,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/TorqueEditText" />
 
         </LinearLayout>
@@ -226,6 +235,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
                 android:id="@+id/ZeroSixtyEditText" />
 
         </LinearLayout>
@@ -244,8 +255,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/TopspeedEditText" />
 
         </LinearLayout>
@@ -259,13 +271,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="60-0 Time: " />
+                android:text="60-0 in ft: " />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/SixtyZeroEditText" />
 
         </LinearLayout>
@@ -284,8 +297,9 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:ems="10"
+                android:layout_weight="1"
                 android:id="@+id/SeatsEditText" />
 
         </LinearLayout>
@@ -304,7 +318,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/exteriorColorSpinner" />
+                android:id="@+id/exteriorColorSpinner"
+                style="@style/spinner_style" />
 
         </LinearLayout>
 
@@ -323,7 +338,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/interiorColorSpinner" />
+                android:id="@+id/interiorColorSpinner"
+                style="@style/spinner_style"/>
 
         </LinearLayout>
 
@@ -341,7 +357,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/drivetrainSpinner" />
+                android:id="@+id/drivetrainSpinner"
+                style="@style/spinner_style"/>
 
         </LinearLayout>
 
@@ -359,7 +376,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/transmissionSpinner" />
+                android:id="@+id/transmissionSpinner"
+                style="@style/spinner_style"/>
 
         </LinearLayout>
 
@@ -377,7 +395,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/FuelSpinner" />
+                android:id="@+id/FuelSpinner"
+                style="@style/spinner_style" />
 
         </LinearLayout>
 
@@ -395,7 +414,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/bodyStyleSpinner" />
+                android:id="@+id/bodyStyleSpinner"
+                style="@style/spinner_style" />
         </LinearLayout>
 
         <LinearLayout

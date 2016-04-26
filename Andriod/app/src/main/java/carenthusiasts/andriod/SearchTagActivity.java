@@ -2,6 +2,7 @@ package carenthusiasts.andriod;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,10 +57,10 @@ public class SearchTagActivity extends AppCompatActivity {
     public static final String TAG8 ="TAG8";
     public static final String TAG9 ="TAG9";
     public static final String TAG10 ="TAG10";
+    public static final String USER = "USER";
 
 
-
-
+    private String useremail = "0";
 
     private String make = "Select";
     private String model = "Select";
@@ -112,7 +113,7 @@ public class SearchTagActivity extends AppCompatActivity {
     }
     private void getextras(){
         Intent i = getIntent();
-
+        useremail = i.getStringExtra("USER");
         make = i.getStringExtra("MAKE");
         model =  i.getStringExtra("MODEL");
         yearmin =  i.getStringExtra("YEARMIN");
@@ -162,6 +163,7 @@ public class SearchTagActivity extends AppCompatActivity {
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), SearchResultsActivity.class);
+                i.putExtra("USER", useremail);
                 i.putExtra("MAKE", make);
                 i.putExtra("MODEL",model);
                 i.putExtra("YEARMIN",yearmin);
@@ -218,7 +220,6 @@ public class SearchTagActivity extends AppCompatActivity {
         tagName.setText("Select new Tag: ");
         tagName.setTextAppearance(SearchTagActivity.this,android.R.style.TextAppearance_Medium);  //deprecated but new version without passing This requires api 23+
         TagCategorySpinner = new Spinner(SearchTagActivity.this);
-
         TagSpinner = new Spinner(SearchTagActivity.this);
 
         final String[] arraySpinner =  {"Select","Engine","Suspension","Interior","Bodywork","Other"};

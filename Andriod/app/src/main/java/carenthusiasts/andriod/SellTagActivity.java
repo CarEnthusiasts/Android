@@ -18,10 +18,14 @@ import java.text.DecimalFormat;
 
 public class SellTagActivity extends AppCompatActivity {
 
+    public static final String USER = "USER";
+
     private String category ="NULL";
     private String tag = "NULL";
     private String description = "NULL";
     private String carid = "NULL";
+    private String useremail = "0";
+
 
     private Spinner TagCategorySpinner;
     private Spinner TagSpinner;
@@ -35,11 +39,14 @@ public class SellTagActivity extends AppCompatActivity {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
                 carid= null;
+                useremail=null;
             } else {
                 carid= extras.getString("CARID");
+                useremail= extras.getString("USER");
             }
         } else {
             carid= (String) savedInstanceState.getSerializable("CARID");
+            useremail = (String) savedInstanceState.getSerializable("USER");
         }
         setContentView(R.layout.activity_sell_tag);
         createNewSpinners();
@@ -71,7 +78,7 @@ public class SellTagActivity extends AppCompatActivity {
         SearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
-                //i.putExtra("PersonID", personID);
+                i.putExtra("USER", useremail);
                 startActivity(i);
             }
         });

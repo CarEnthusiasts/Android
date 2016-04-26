@@ -164,41 +164,53 @@ public class CarPageActivity extends AppCompatActivity {
                         JSONObject jsonObj = new JSONObject(resultString);
 
                         String imageuri = jsonObj.getString("picture");
-                        /*if(imageuri.equals("NULL")){
-                            drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                        if(imageuri.equals("NULL")){
+                            drawable = getResources().getDrawable(R.mipmap.ic_ce);
                         }
                         else{
-                            try {
-                                Uri myUri = Uri.parse(imageuri);
-                                FileInputStream fis = new FileInputStream(new File("content://media/external/images/media/9382"));
-                                drawable = Drawable.createFromPath(fis.toString());
-                                fis.close();
-                            } catch (Exception e) {
-                                Toast.makeText(CarPageActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                            if(imageuri.endsWith("29001")){
+                                drawable = getResources().getDrawable(R.drawable.car3);
                             }
-                        }*/
-                        
+                            if(imageuri.endsWith("29000")){
+                                drawable = getResources().getDrawable(R.drawable.car2);
+                            }
+                            if(imageuri.endsWith("28999")){
+                                drawable = getResources().getDrawable(R.drawable.car1);
+                            }
+                            if(imageuri.endsWith("28998")){
+                                drawable = getResources().getDrawable(R.drawable.car4);
+                            }
+
+                            /*try {
+
+                                Uri myUri = Uri.parse(imageuri);
+                                File filePath = getFileStreamPath(imageuri);
+                                drawable = Drawable.createFromPath(filePath.toString());
+                            } catch (Exception e) {
+                                drawable = getResources().getDrawable(R.mipmap.ic_ce);
+                            }*/
+                        }
+
                         carimage.setImageDrawable(drawable);
-                        price.setText(jsonObj.getString("price"));
+                        price.setText("$ " + jsonObj.getString("price"));
                         make.setText(jsonObj.getString("make"));
                         model.setText(jsonObj.getString("model"));
                         year.setText(jsonObj.getString("yearmade"));
-                        mileage.setText(jsonObj.getString("mileage"));
+                        mileage.setText(jsonObj.getString("mileage")+" Miles");
                         exterior.setText(jsonObj.getString("exterior"));
                         bodystyle.setText(jsonObj.getString("bodytype"));
                         seats.setText(jsonObj.getString("seats"));
                         interior.setText(jsonObj.getString("interior"));
                         drivetrain.setText(jsonObj.getString("drivetrain"));
                         transmission.setText(jsonObj.getString("transmission"));
-                        displacement.setText(jsonObj.getString("displacement"));
+                        displacement.setText(jsonObj.getString("displacement")+"L");
                         cylinders.setText(jsonObj.getString("cylinders"));
                         hp.setText(jsonObj.getString("hp"));
                         tq.setText(jsonObj.getString("tq"));
                         fuel.setText(jsonObj.getString("fuel"));
-                        zerosixty.setText(jsonObj.getString("zerosixty"));
-                        topspeed.setText(jsonObj.getString("topspeed"));
-                        sixtyzero.setText(jsonObj.getString("sixtyzero"));
+                        zerosixty.setText(jsonObj.getString("zerosixty")+" sec");
+                        topspeed.setText(jsonObj.getString("topspeed")+" MPH");
+                        sixtyzero.setText(jsonObj.getString("sixtyzero")+ " ft");
                         email.setText(jsonObj.getString("userid"));
 
                     }

@@ -36,7 +36,7 @@ public class SellActivity extends AppCompatActivity {
     private String fuel = "NULL";
     private String bodytype = "NULL";
     private String picture = "NULL";
-    private String useremail = "";
+    private String useremail = "0";
     private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,21 +18,13 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save Search"
-            android:id="@+id/saveSearchButton" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Search"
-            android:id="@+id/editSearchButton" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Search"
-            android:id="@+id/newSearchButton" />
+            android:id="@+id/newSearchButton"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <ListView
@@ -40,7 +32,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorSearchResultList" />
 
 
 

@@ -27,12 +27,14 @@ import java.util.HashMap;
  * Created by Alex on 4/24/2016.
  */
 public class LoginAttempt extends AsyncTask<String, Void, String> {
+    public static final String USER = "USER";
     private ProgressDialog pDialog;
 
     private Context context;
 
     private String email;
     private String password;
+    private String previous;
 
     public LoginAttempt(Context context) {
         this.context = context;
@@ -50,6 +52,7 @@ public class LoginAttempt extends AsyncTask<String, Void, String> {
 
         email = arg0[0];
         password= arg0[1];
+        previous = arg0[2];
 
         String link;
         String data;
@@ -87,12 +90,26 @@ public class LoginAttempt extends AsyncTask<String, Void, String> {
 
                     if (getemail.equals(email) && getpassword.equals(password)){
                         Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(context, SellActivity.class);
-                        intent.putExtra("USER", email);
-                        context.startActivity(intent);
+                        if(previous.equals("0")) {
+                            Intent intent = new Intent(context, SellActivity.class);
+                            intent.putExtra("USER", email);
+                            context.startActivity(intent);
+                        }
+                        else{
+                            if(previous.equals("1")){
+                                Intent intent = new Intent(context, ProfileActivity.class);
+                                intent.putExtra("USER", email);
+                                context.startActivity(intent);
+                            }
+                            else{
+                                Intent intent = new Intent(context, SearchResultsActivity.class);
+                                intent.putExtra("USER", email);
+                                context.startActivity(intent);
+                            }
+                        }
                     }
                     else{
-                        Toast.makeText(context, "Login failed. No account found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Wrong password or email", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -102,7 +119,7 @@ public class LoginAttempt extends AsyncTask<String, Void, String> {
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(context, "Login failed. No account found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Wrong password or email", Toast.LENGTH_SHORT).show();
         }
 
     }
