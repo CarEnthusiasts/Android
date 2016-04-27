@@ -1,5 +1,7 @@
 package carenthusiasts.andriod;
-
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * this class is responsible for the sell activity
+ */
 public class SellActivity extends AppCompatActivity {
 
     private String make ="NULL";
@@ -58,6 +63,12 @@ public class SellActivity extends AppCompatActivity {
         createAllSpinners();
         createImageButton();
     }
+
+    /**
+     * this function will creates all spinners
+     * any function with create_spinner will load the spinner fill them with info and
+     * add a listener
+     */
     private  void createAllSpinners(){
         createMakeSpinner();
         createModelSpinner();
@@ -69,6 +80,10 @@ public class SellActivity extends AppCompatActivity {
         createFuelSpinner();
         createBodyStyleSpinner();
     }
+
+    /**
+     * loads the next button and adds listener
+     */
     private void createNextButton(){
         final Button NextButton = (Button) findViewById(R.id.NextButton);
         NextButton.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +93,10 @@ public class SellActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * formating and replacing select with null beffore pushing information to carPHPloader
+     */
     private void loadcar(){
         String hold="";
         if(year.equals("Select")){
@@ -202,6 +221,10 @@ public class SellActivity extends AppCompatActivity {
         }
         //
     }
+
+    /**
+     * responsible fr retrieving an image to user
+     */
     private void createImageButton(){
         ImageButton buttonLoadImage = (ImageButton) findViewById(R.id.searchImageButton);
         buttonLoadImage.setOnClickListener(new View.OnClickListener() {

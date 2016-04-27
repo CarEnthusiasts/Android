@@ -1,5 +1,8 @@
 package carenthusiasts.andriod;
 
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,6 +19,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+/**
+ * this class is responsible for the change password activity
+ */
 public class ChangePasswordActivity extends AppCompatActivity {
 
     private String email;
@@ -45,6 +51,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         loadsave();
     }
 
+    /**
+     * this method will compare old password to current and new to repeat if all is good change password using JSON handler class
+     */
     private void loadsave() {
         Button save = (Button) findViewById(R.id.savePasswordButton);
         save.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +72,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * handles the password change with php json
+     */
     private class JSONUpdate extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
 

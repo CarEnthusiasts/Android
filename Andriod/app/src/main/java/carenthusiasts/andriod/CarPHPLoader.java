@@ -1,7 +1,7 @@
 package carenthusiasts.andriod;
 
 /**
- * Created by Alex on 4/22/2016.
+ * Created by Alex
  */
 
 
@@ -22,7 +22,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
+/**
+ * This class will load the cars information to the server
+ */
 public class CarPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;

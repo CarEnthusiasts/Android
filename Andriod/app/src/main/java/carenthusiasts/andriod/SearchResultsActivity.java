@@ -1,5 +1,9 @@
 package carenthusiasts.andriod;
 
+/**
+ * This Activity written by: Alex Brooks
+ */
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -42,6 +46,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * this class will run the search results page
+ */
 public class SearchResultsActivity extends AppCompatActivity {
 
     ListView list;
@@ -216,6 +223,10 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * this class will parse the results for the php file to get json and format it into the list adapter for
+     * the cars
+     */
     private class JSONParse extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
         @Override

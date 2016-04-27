@@ -1,5 +1,7 @@
 package carenthusiasts.andriod;
-
+/**
+ * This Activity written by: Alex Brooks
+ */
 
 
 
@@ -16,7 +18,9 @@ package carenthusiasts.andriod;
         import java.net.URL;
         import java.net.URLEncoder;
 
-
+/**
+ * this class with load saved searches. front end never implemented
+ */
 public class SearchPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;

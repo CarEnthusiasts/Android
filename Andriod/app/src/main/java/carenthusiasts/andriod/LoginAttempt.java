@@ -1,5 +1,7 @@
 package carenthusiasts.andriod;
-
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;

@@ -1,5 +1,7 @@
 package carenthusiasts.andriod;
-
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * this class is responsible for the login activity
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editPassword,editEmail;
@@ -21,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
         intent.removeExtra("PREVIOUS");
         loadButtons();
     }
+
+    /**
+     * loads all buttons on page
+     */
     public void loadButtons(){
         editPassword = (EditText) findViewById(R.id.editPasswordText);
         editEmail = (EditText) findViewById(R.id.editEmailText);

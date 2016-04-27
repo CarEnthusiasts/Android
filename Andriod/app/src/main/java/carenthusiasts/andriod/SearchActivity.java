@@ -1,5 +1,8 @@
 package carenthusiasts.andriod;
 
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;

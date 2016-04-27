@@ -1,5 +1,7 @@
 package carenthusiasts.andriod;
-
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+/**
+ * this class is responsible for the home page
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static final String USER = "USER";

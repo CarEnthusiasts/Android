@@ -1,5 +1,8 @@
 package carenthusiasts.andriod;
 
+/**
+ * This Activity written by: Alex Brooks
+ */
 import android.content.Intent;
 import android.graphics.Color;
 import android.nfc.Tag;
@@ -15,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * this activity will loads the search tags as well as pass on search parameters
+ */
 public class SearchTagActivity extends AppCompatActivity {
 
     public static final String MAKE = "MAKE";

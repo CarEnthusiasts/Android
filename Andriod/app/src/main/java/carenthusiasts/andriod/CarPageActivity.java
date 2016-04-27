@@ -1,3 +1,6 @@
+/**
+ * This Activity written by: Alex Brooks
+ */
 package carenthusiasts.andriod;
 
 import android.app.ProgressDialog;
@@ -31,6 +34,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * this class runs the car page activity
+ */
 public class CarPageActivity extends AppCompatActivity {
 
     ListView list;
@@ -85,13 +91,24 @@ public class CarPageActivity extends AppCompatActivity {
         loadPage();
         loadTags();
     }
+    /**
+    * runs the json event for loading page
+     */
     private void loadPage(){
         new JSONParsePage().execute();
     }
+
+    /**
+     * runs the json event for loading the tags
+     */
     private void loadTags(){
         oslist = new ArrayList<HashMap<String, String>>();
         new JSONParseTags().execute();
     }
+
+    /**
+     * this class accesses the php file and loads the page through JSON
+     */
     private class JSONParsePage extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
         @Override
@@ -181,14 +198,7 @@ public class CarPageActivity extends AppCompatActivity {
                                 drawable = getResources().getDrawable(R.drawable.car4);
                             }
 
-                            /*try {
 
-                                Uri myUri = Uri.parse(imageuri);
-                                File filePath = getFileStreamPath(imageuri);
-                                drawable = Drawable.createFromPath(filePath.toString());
-                            } catch (Exception e) {
-                                drawable = getResources().getDrawable(R.mipmap.ic_ce);
-                            }*/
                         }
 
                         carimage.setImageDrawable(drawable);
@@ -227,6 +237,9 @@ public class CarPageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * this class accesses the php file to load tags associated with the car and loads them through JSON
+     */
     private class JSONParseTags extends AsyncTask<String, Void, String> {
         private ProgressDialog pDialog;
         @Override

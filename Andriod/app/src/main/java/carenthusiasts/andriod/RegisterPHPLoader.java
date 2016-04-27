@@ -1,7 +1,7 @@
 package carenthusiasts.andriod;
 
 /**
- * Created by Alex on 4/22/2016.
+ * Created by Alex
  */
 
 import android.content.Context;
@@ -18,7 +18,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
+/**
+ * this class is responsible for the register action following a loginactivity
+ */
 public class RegisterPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;

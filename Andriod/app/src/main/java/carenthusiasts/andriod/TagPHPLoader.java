@@ -2,7 +2,7 @@ package carenthusiasts.andriod;
 
 
 /**
- * Created by Alex on 4/22/2016.
+ * Created by Alex
  */
 
 
@@ -21,7 +21,9 @@ package carenthusiasts.andriod;
         import java.net.URL;
         import java.net.URLEncoder;
 
-
+/**
+ * this function will load the tags into the database via php call
+ */
 public class TagPHPLoader extends AsyncTask<String, Void, String> {
 
     private Context context;
